@@ -1,4 +1,4 @@
-package beans;
+package Model;
 import java.io.Serializable;
 
 /*
@@ -11,27 +11,38 @@ import java.io.Serializable;
  *
  * @author trandamtrungthai
  */
-public class UserBean implements Serializable{
+public class User implements Serializable {
     
     private String firstName;
     private String lastName;
     private String email;
-    private String phone;
-    private String userName;
+    private int phone;
     private String password;
+    private String address;
+//    private int customerId;
+
     
-    public UserBean() {}
+    public User() {}
     
-    public UserBean(String firstName, String lastName, String email, String phone, String userName, String password)
+    public User(String firstName, String lastName, String email, int phone, String password, String address) 
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
-        this.userName = userName;
         this.password = password;
+        this.address = address;
+//        this.customerId = customerId;
     }
-
+    
+//    public int getCustomerId() {
+//        return customerId;
+//    }
+//
+//    public void setCustomerId(int customerId) {
+//        this.customerId = customerId;
+//    } 
+    
     public String getPassword() {
         return password;
     }
@@ -39,21 +50,12 @@ public class UserBean implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }    
 
@@ -79,6 +81,20 @@ public class UserBean implements Serializable{
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }

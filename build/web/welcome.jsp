@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="beans.UserBean"%>
+<%@page import="Model.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +35,7 @@
         </style>
     </head>
     <body>
-        <%--<jsp:useBean id="UserBean" scope="session" class="beans.UserBean"/>--%>
+        <%--<jsp:useBean id="User" scope="session" class="Model"/>--%>
         <div class="container">
             <div class="btn-container">
                 <a href="main.jsp" class="button">Main</a>
@@ -48,23 +48,17 @@
                 String lastName = request.getParameter("lastName");
                 String email = request.getParameter("email");
                 String phone = request.getParameter("phone");
-                String userName = request.getParameter("userName");
                 String password = request.getParameter("password");
+                String address = request.getParameter("address");
+                int customerId = Integer.parseInt(request.getParameter("customerId"));
             %>
 
             <h1>First Name: <%= firstName%></h1>   
             <h1>Last Name: <%= lastName%></h1>    
             <h1>Email: <%= email%></h1>    
             <h1>Phone: <%= phone%></h1>    
-            <h1>Username: <%= userName%></h1>    
             <h1>Password: <%= password%></h1>    
         </div>
-       
-
-        <%
-            UserBean userBean = new UserBean(firstName, lastName, email, phone, userName, password);
-            session.setAttribute("userBean", userBean);
-        %>
 
 
 

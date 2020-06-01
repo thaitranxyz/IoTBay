@@ -56,11 +56,6 @@
             </div>
         </nav>
         
-        <%
-            String name = request.getParameter("userName");
-            String email = request.getParameter("email");
-            
-            System.out.println("Welcome " + name + " " + email);
-            %>
+        <jsp:include page="/ConnServlet" flush="true" />
     </body>
 </html>

@@ -4,8 +4,9 @@
     Author     : trandamtrungthai
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="beans.UserBean"%>
+<%@page import="Model.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,15 +31,12 @@
         </style>
     </head>
     <body>
-        <% 
-            UserBean userBean = (UserBean)session.getAttribute("userBean");
-        %>
         
         <a href="welcome.jsp" class="button">Go back</a>
         <a href="logout.jsp" class="button">Logout</a>
         <a href="edit.jsp" class="button">Edit</a>
-        
-        <jsp:include page="profile.jsp" flush="true" />
+        <div>you made it bitch</div>
+        <%--<jsp:include page="profile.jsp" flush="true" />--%>
         
     </body>
 </html>

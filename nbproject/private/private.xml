@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/trandamtrungthai/Desktop/IoTBayApp/web/index.jsp</file>
-            <file>file:/Users/trandamtrungthai/Desktop/IoTBayApp/web/login.jsp</file>
-            <file>file:/Users/trandamtrungthai/Desktop/IoTBayApp/web/main.jsp</file>
-            <file>file:/Users/trandamtrungthai/Desktop/IoTBayApp/web/register.jsp</file>
-            <file>file:/Users/trandamtrungthai/Desktop/IoTBayApp/src/java/beans/UserBean.java</file>
-            <file>file:/Users/trandamtrungthai/Desktop/IoTBayApp/web/welcome.jsp</file>
+            <file>file:/Users/trandamtrungthai/Downloads/ISD%20prototype%20group%2041/IoTBayApp/src/java/iotModelDAO/DBManager.java</file>
+            <file>file:/Users/trandamtrungthai/Downloads/ISD%20prototype%20group%2041/IoTBayApp/src/java/iotBayController/RegisterServlet.java</file>
         </group>
     </open-files>
 </project-private>
