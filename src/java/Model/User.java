@@ -19,12 +19,12 @@ public class User implements Serializable {
     private int phone;
     private String password;
     private String address;
-    private int customerId;
+    private int userId;
 
     
     public User() {}
     
-    public User(int customerId, String firstName, String lastName, String email, int phone, String password, String address) 
+    public User(int userId, String firstName, String lastName, String email, int phone, String password, String address) 
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,15 +32,15 @@ public class User implements Serializable {
         this.phone = phone;
         this.password = password;
         this.address = address;
-        this.customerId = customerId;
+        this.userId = userId;
     }
     
-    public int getCustomerId() {
-        return customerId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     } 
     
     public String getPassword() {

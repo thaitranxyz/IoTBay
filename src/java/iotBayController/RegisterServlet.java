@@ -77,8 +77,12 @@ public class RegisterServlet extends HttpServlet {
                 else
                 {
                     manager.addUser(firstName, lastName, email, phone, password, address);
-                    User user = new User(firstName, lastName, email, phone, password, address);
-                    session.setAttribute("user", user);
+                    User user = manager.findUser(email, password);
+                    System.out.print(user.getEmail() + " " + user.getFirstName());
+//                    exist = manager.findUser(email, password);
+//                    int userId = exist.getUserId(); 
+//                    User user = new User(userId, firstName, lastName, email, phone, password, address);
+//                    session.setAttribute("user", user);
                     request.getRequestDispatcher("main.jsp").include(request, response);
                 }
             }

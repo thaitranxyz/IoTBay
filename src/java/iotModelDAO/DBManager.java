@@ -26,7 +26,7 @@ public class DBManager {
     
     public User findUser(String email, String password) throws SQLException
     {
-        String fetch = "SELECT * FROM IOTBAY.CUSTOMER WHERE EMAIL='"+email+"' AND PASSWORD='"+password+"'";
+        String fetch = "SELECT * FROM IOTBAY.REGISTEREDUSER WHERE EMAIL='"+email+"' AND PASSWORD='"+password+"'";
         ResultSet rs = st.executeQuery(fetch);
         
         while(rs.next())
@@ -49,7 +49,7 @@ public class DBManager {
     
     public void addUser(String firstName, String lastName, String email, int phone, String password, String address) throws SQLException
     {
-        st.executeUpdate("INSERT INTO IOTBAY.CUSTOMER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS)" + "VALUES ('" + customerId + "','" + firstName + "', '" + lastName + "', '" + email + "', '" + phone + "', '" + password + "', '" + address + "')");
+        st.executeUpdate("INSERT INTO IOTBAY.REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS)" + "VALUES (DEFAULT" + ", '" + firstName + "', '" + lastName + "', '" + email + "', '" + phone + "', '" + password + "', '" + address + "')");
     }
     
 }
