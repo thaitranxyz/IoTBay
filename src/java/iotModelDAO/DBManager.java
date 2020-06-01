@@ -31,17 +31,17 @@ public class DBManager {
         
         while(rs.next())
         {
-            String userEmail = rs.getString(3);
-            String userPass = rs.getString(4);
+            String userEmail = rs.getString(4);
+            String userPass = rs.getString(5);
             
             if (userEmail.equals(email) && userPass.equals(password))
             {
-                String firstName = rs.getString(1);
-                String lastName = rs.getString(2);
-                String address = rs.getString(6);
-                int phone = rs.getInt(5);
-//                int customerId = rs.getInt(0);
-                return new User(firstName, lastName, email, phone, password, address);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                String address = rs.getString(7);
+                int phone = rs.getInt(6);
+                int customerId = rs.getInt(1);
+                return new User(customerId, firstName, lastName, email, phone, password, address);
             }
         }
         return null;
@@ -49,7 +49,7 @@ public class DBManager {
     
     public void addUser(String firstName, String lastName, String email, int phone, String password, String address) throws SQLException
     {
-        st.executeUpdate("INSERT INTO IOTBAY.CUSTOMER " + "VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', '" + phone + "', '" + password + "', '" + address + "')");
+        st.executeUpdate("INSERT INTO IOTBAY.CUSTOMER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS)" + "VALUES ('" + customerId + "','" + firstName + "', '" + lastName + "', '" + email + "', '" + phone + "', '" + password + "', '" + address + "')");
     }
     
 }

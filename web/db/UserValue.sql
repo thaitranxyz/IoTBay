@@ -8,7 +8,7 @@
  * Created: 28/05/2020
  */
 
-INSERT INTO IOTBAY.CUSTOMER 
+INSERT INTO REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS)
 VALUES
 ('Sam', 'Smith', 'sam.smith@gmail.com', 'default', 01239485756, '123 sydney street'),
 ('Dwayne', 'Carter', 'dwayne.carter@gmail.com', 'default', 0192837465, '123 sydney street'),
