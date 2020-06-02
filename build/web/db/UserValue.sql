@@ -10,9 +10,9 @@
 
 INSERT INTO REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS)
 VALUES
-(DEFAULT, 'Sam', 'Smith', 'sam.smith@gmail.com', 'default', 01239485756, '123 sydney street'),
-(DEFAULT, 'Dwayne', 'Carter', 'dwayne.carter@gmail.com', 'default', 0192837465, '123 sydney street'),
-(DEFAULT, 'Jennifer', 'Chou', 'jennifer.chou@gmail.com', 'default', 0234158673, '123 sydney street'),
-(DEFAULT, 'Janet', 'Kim', 'janet.kim@gmail.com', 'default', 09876534521, '123 sydney street'),
-(DEFAULT, 'John', 'Doe', 'john.doe@gmail.com', 'default', 01239485756, '123 sydney street');
+('Sam', 'Smith', 'sam.smith@gmail.com', 'default', 01239485756, '123 sydney street'),
+('Dwayne', 'Carter', 'dwayne.carter@gmail.com', 'default', 0192837465, '123 sydney street'),
+('Jennifer', 'Chou', 'jennifer.chou@gmail.com', 'default', 0234158673, '123 sydney street'),
+('Janet', 'Kim', 'janet.kim@gmail.com', 'default', 09876534521, '123 sydney street'),
+('John', 'Doe', 'john.doe@gmail.com', 'default', 01239485756, '123 sydney street');
 

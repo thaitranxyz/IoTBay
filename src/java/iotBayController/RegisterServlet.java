@@ -8,10 +8,7 @@ package iotBayController;
 import Model.User;
 import iotModelDAO.DBManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +64,6 @@ public class RegisterServlet extends HttpServlet {
         {
             try
             {
-                System.out.print("Reach here");
                 User exist = manager.findUser(email, password);
                 if (exist != null)
                 {
@@ -76,13 +72,13 @@ public class RegisterServlet extends HttpServlet {
                 }
                 else
                 {
-                    manager.addUser(firstName, lastName, email, phone, password, address);
-                    User user = manager.findUser(email, password);
-                    System.out.print(user.getEmail() + " " + user.getFirstName());
+                   manager.addUser(firstName, lastName, email, password, phone, address);
+                   User user = new User(firstName, lastName, email, password, phone, address);
+    //                    System.out.print(user.getEmail() + " " + user.getFirstName());
 //                    exist = manager.findUser(email, password);
 //                    int userId = exist.getUserId(); 
-//                    User user = new User(userId, firstName, lastName, email, phone, password, address);
-//                    session.setAttribute("user", user);
+//                    User user = new User(firstName, lastName, email, phone, password, address);
+                    session.setAttribute("user", user);
                     request.getRequestDispatcher("main.jsp").include(request, response);
                 }
             }

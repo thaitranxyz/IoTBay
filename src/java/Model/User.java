@@ -24,24 +24,23 @@ public class User implements Serializable {
     
     public User() {}
     
-    public User(int userId, String firstName, String lastName, String email, int phone, String password, String address) 
+    public User(String firstName, String lastName, String email, String password, int phone, String address) 
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.phone = phone;
         this.password = password;
         this.address = address;
-        this.userId = userId;
+//        this.userId = userId;
     }
     
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    } 
+//    public int getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(int userId) {
+//        this.userId = userId;
+//    } 
     
     public String getPassword() {
         return password;

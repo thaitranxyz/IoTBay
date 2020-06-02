@@ -35,7 +35,7 @@
         <a href="welcome.jsp" class="button">Go back</a>
         <a href="logout.jsp" class="button">Logout</a>
         <a href="edit.jsp" class="button">Edit</a>
-        <div>you made it bitch</div>
+        <div>It works</div>
         <%--<jsp:include page="profile.jsp" flush="true" />--%>
         
     </body>

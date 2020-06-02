@@ -8,6 +8,7 @@ package iotModelDAO;
 import Model.User;
 import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -41,15 +42,15 @@ public class DBManager {
                 String address = rs.getString(7);
                 int phone = rs.getInt(6);
                 int customerId = rs.getInt(1);
-                return new User(customerId, firstName, lastName, email, phone, password, address);
+                return new User(firstName, lastName, email, password, phone, address);
             }
         }
         return null;
     }    
     
-    public void addUser(String firstName, String lastName, String email, int phone, String password, String address) throws SQLException
+    public void addUser(String firstName, String lastName, String email, String password, int phone, String address) throws SQLException
     {
-        st.executeUpdate("INSERT INTO IOTBAY.REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS)" + "VALUES (DEFAULT" + ", '" + firstName + "', '" + lastName + "', '" + email + "', '" + phone + "', '" + password + "', '" + address + "')");
+        st.executeUpdate("INSERT INTO IOTBAY.REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS) VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "', " + phone + ", '" + address + "')");
     }
     
 }
