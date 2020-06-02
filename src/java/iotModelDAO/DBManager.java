@@ -41,12 +41,34 @@ public class DBManager {
                 String lastName = rs.getString(3);
                 String address = rs.getString(7);
                 int phone = rs.getInt(6);
-                int customerId = rs.getInt(1);
-                return new User(firstName, lastName, email, password, phone, address);
+                int userId = rs.getInt(1);
+                return new User(userId, firstName, lastName, email, password, phone, address);
             }
         }
         return null;
-    }    
+    }
+    public User findUserByEmail(String email) throws SQLException
+    {
+        String fetch = "SELECT * FROM IOTBAY.REGISTEREDUSER WHERE EMAIL='" + email + "'";
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while(rs.next())
+        {
+            String userEmail = rs.getString(4);
+            
+            if (userEmail.equals(email))
+            {
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                String address = rs.getString(7);
+                int phone = rs.getInt(6);
+                int userId = rs.getInt(1);
+                String password = rs.getString(5);
+                return new User(userId, firstName, lastName, email, password, phone, address);
+            }
+        }
+        return null;
+    }
     
     public void addUser(String firstName, String lastName, String email, String password, int phone, String address) throws SQLException
     {

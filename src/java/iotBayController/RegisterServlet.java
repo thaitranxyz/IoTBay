@@ -35,51 +35,36 @@ public class RegisterServlet extends HttpServlet {
         String rePass = request.getParameter("rePassword");
         DBManager manager = (DBManager) session.getAttribute("manager");
         validator.clear(session);
-        
-//        try
-//        {
-//            user = manager.findUser(email, password);
-//        } 
-//        catch (SQLException ex) 
-//        {
-//            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
+       
         
         if (!validator.validateEmail(email))
         {
             session.setAttribute("emailErr", "Email format incorrect");
             request.getRequestDispatcher("register.jsp").include(request, response);
         }
-//        else if (user.getEmail().equals(email))
-//        {
-//            session.setAttribute("emailErr", "Email already exist");
-//        }
-//        else if (password != rePass)
-//        {
-//            session.setAttribute("passErr", "Password does not match");
-//            request.getRequestDispatcher("register.jsp").include(request, response);
-//        }
+        else if (password != rePass)
+        {
+            session.setAttribute("passErr", "Password does not match");
+            request.getRequestDispatcher("register.jsp").include(request, response);
+        }
         else
         {
             try
             {
-                User exist = manager.findUser(email, password);
-                if (exist != null)
+                User exist = manager.findUserByEmail(email);
+                if (exist.getEmail().equals(email))
                 {
-                    session.setAttribute("existErr", "Already exist");
+                    session.setAttribute("existErr", "Email already exist!");
                     request.getRequestDispatcher("register.jsp").include(request, response);
                 }
                 else
                 {
                    manager.addUser(firstName, lastName, email, password, phone, address);
-                   User user = new User(firstName, lastName, email, password, phone, address);
-    //                    System.out.print(user.getEmail() + " " + user.getFirstName());
-//                    exist = manager.findUser(email, password);
-//                    int userId = exist.getUserId(); 
-//                    User user = new User(firstName, lastName, email, phone, password, address);
-                    session.setAttribute("user", user);
-                    request.getRequestDispatcher("main.jsp").include(request, response);
+                   User userToFind = manager.findUser(email, password);
+                   int userId = userToFind.getUserId(); //get userId
+                   User user = new User(userId, firstName, lastName, email, password, phone, address);
+                   session.setAttribute("user", user);
+                   request.getRequestDispatcher("main.jsp").include(request, response);
                 }
             }
             catch (SQLException ex)

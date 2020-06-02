@@ -11,6 +11,7 @@ public class Validator implements Serializable
    private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
    private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
    private String passwordPattern = "[a-z0-9]{4,}";
+   private String phonePattern = "";
    
    public Validator() {}
    
@@ -44,7 +45,7 @@ public class Validator implements Serializable
    
    public void clear(HttpSession session)
    {
-       session.setAttribute("emailErr", "");
+       session.setAttribute("emailErr", "Email Address");
        session.setAttribute("passwordErr", "");
        session.setAttribute("existErr", "");
        session.setAttribute("nameErr", "");
