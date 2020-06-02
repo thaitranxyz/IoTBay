@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
-        int phone = Integer.parseInt(request.getParameter("phone"));
+        String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String rePass = request.getParameter("rePassword");
         DBManager manager = (DBManager) session.getAttribute("manager");
@@ -42,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("emailErr", "Email format incorrect");
             request.getRequestDispatcher("register.jsp").include(request, response);
         }
-        else if (password != rePass)
+        else if (!password.equals(rePass))
         {
             session.setAttribute("passErr", "Password does not match");
             request.getRequestDispatcher("register.jsp").include(request, response);
@@ -52,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
             try
             {
                 User exist = manager.findUserByEmail(email);
-                if (exist.getEmail().equals(email))
+                if (exist != null)
                 {
                     session.setAttribute("existErr", "Email already exist!");
                     request.getRequestDispatcher("register.jsp").include(request, response);
@@ -62,7 +62,8 @@ public class RegisterServlet extends HttpServlet {
                    manager.addUser(firstName, lastName, email, password, phone, address);
                    User userToFind = manager.findUser(email, password);
                    int userId = userToFind.getUserId(); //get userId
-                   User user = new User(userId, firstName, lastName, email, password, phone, address);
+                   int role = userToFind.getRole();
+                   User user = new User(userId, firstName, lastName, email, password, phone, address, role);
                    session.setAttribute("user", user);
                    request.getRequestDispatcher("main.jsp").include(request, response);
                 }

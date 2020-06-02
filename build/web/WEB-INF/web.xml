@@ -16,6 +16,10 @@
         <servlet-name>UpdateServlet</servlet-name>
         <servlet-class>iotBayController.UpdateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditServlet</servlet-name>
+        <servlet-class>iotBayController.EditServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>UpdateServlet</servlet-name>
         <url-pattern>/UpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditServlet</servlet-name>
+        <url-pattern>/EditServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

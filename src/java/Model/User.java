@@ -16,22 +16,33 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private int phone;
+    private String phone;
     private String password;
     private String address;
     private int userId;
+    private int role;
 
     
     public User() {}
     
-    public User(int userId, String firstName, String lastName, String email, String password, int phone, String address) 
+    public User(int userId, String firstName, String lastName, String email, String password, String phone, String address, int role) 
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
         this.password = password;
         this.address = address;
         this.userId = userId;
+        this.role = role;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
     
     public int getUserId() {
@@ -50,11 +61,11 @@ public class User implements Serializable {
         this.password = password;
     }
     
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }    
 

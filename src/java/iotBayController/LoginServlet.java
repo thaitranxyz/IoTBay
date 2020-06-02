@@ -42,19 +42,19 @@ public class LoginServlet extends HttpServlet
                 user = manager.findUser(email, password);
                 if (user != null)
                 {
-                    session.setAttribute("users", user);
+                    session.setAttribute("user", user);
                     request.getRequestDispatcher("main.jsp").include(request, response);
                     
                 }
-                else
+                else if (user == null)
                 {
                     session.setAttribute("existErr", "Error: Username or password incorrect");
                     request.getRequestDispatcher("login.jsp").include(request, response);
                 }
             }
-            catch (SQLException | NullPointerException ex) 
+            catch (SQLException ex) 
             {
-                System.out.println(ex.getMessage() == null ? "User does not exist" : "Welcome");
+                System.out.println(ex.getMessage());
             }
         }
         

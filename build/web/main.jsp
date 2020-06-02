@@ -14,27 +14,33 @@
         <title>JSP Page</title>
         <style>
             .button {
-                padding: 15px;
-                padding-left: 5px 0px;
+                padding: 8px 17px;
                 background-color: #00b894;
                 color: white;
                 font-family: Arial, sans-serif;
                 border: 0;
-                font-size: 20px;
+                font-size: 15px;
                 cursor: pointer;
-                border-radius: 20px;
+                border-radius: 5px;
                 position: relative;
                 float: right;
                 margin-right: 5px; 
                 margin-bottom: 20px;
             }
+            
+            .button:hover {
+                background-color: white;
+                color: green;
+            }
         </style>
     </head>
     <body>
-        
-        <a href="welcome.jsp" class="button">Go back</a>
+        <%
+            User user = (User) session.getAttribute("user");
+        %>
+        <!--<a href="welcome.jsp" class="button">Go back</a>-->
         <a href="logout.jsp" class="button">Logout</a>
-        <a href="edit.jsp" class="button">Edit</a>
+        <a href="EditServlet?email='<%= user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Edit</a>
         <div>It works</div>
         <%--<jsp:include page="profile.jsp" flush="true" />--%>
         

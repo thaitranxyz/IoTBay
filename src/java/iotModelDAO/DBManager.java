@@ -40,9 +40,10 @@ public class DBManager {
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
                 String address = rs.getString(7);
-                int phone = rs.getInt(6);
+                String phone = rs.getString(6);
                 int userId = rs.getInt(1);
-                return new User(userId, firstName, lastName, email, password, phone, address);
+                int role = rs.getInt(8);
+                return new User(userId, firstName, lastName, email, password, phone, address, role);
             }
         }
         return null;
@@ -61,18 +62,19 @@ public class DBManager {
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
                 String address = rs.getString(7);
-                int phone = rs.getInt(6);
+                String phone = rs.getString(6);
                 int userId = rs.getInt(1);
                 String password = rs.getString(5);
-                return new User(userId, firstName, lastName, email, password, phone, address);
+                int role = rs.getInt(8);
+                return new User(userId, firstName, lastName, email, password, phone, address, role);
             }
         }
         return null;
     }
     
-    public void addUser(String firstName, String lastName, String email, String password, int phone, String address) throws SQLException
+    public void addUser(String firstName, String lastName, String email, String password, String phone, String address) throws SQLException
     {
-        st.executeUpdate("INSERT INTO IOTBAY.REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS) VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "', " + phone + ", '" + address + "')");
+        st.executeUpdate("INSERT INTO IOTBAY.REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS) VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "', '" + phone + "', '" + address + "')");
     }
     
 }
