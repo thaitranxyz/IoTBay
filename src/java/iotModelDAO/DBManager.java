@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  *
@@ -75,6 +76,24 @@ public class DBManager {
     public void addUser(String firstName, String lastName, String email, String password, String phone, String address) throws SQLException
     {
         st.executeUpdate("INSERT INTO IOTBAY.REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS) VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "', '" + phone + "', '" + address + "')");
+    }
+    
+    public void updateUser(String firstName, String lastName, String email, String password, String phone, String address) throws SQLException
+    {
+        st.executeUpdate("UPDATE IOTBAY.REGISTEREDUSER SET FIRSTNAME='" + firstName + "', LASTNAME='" + lastName + "', "
+                + "PASSWORD='" + password + "', PHONE='" + phone + "', ADDRESS='" + address + "' WHERE EMAIL='" + email + "'");
+    }
+    
+    public void deleteUser(String email) throws SQLException
+    {
+        st.executeUpdate("DELETE FROM IOTBAY.REGISTEREDUSER WHERE EMAIL='" + email + "'");
+    }
+    
+    public void addAccessLogin(int userId, Date loginTime, String logoutTime) throws SQLException
+    {
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yy hh:mm:ss");
+        st.executeUpdate("INSERT INTO IOTBAY.ACCESSLOG (USERID, LOGINDATETIME, LOGOUTDATETIME) VALUES (" + userId + ", " + loginTime + ", '" + logoutTime + "')");
+        
     }
     
 }

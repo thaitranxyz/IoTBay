@@ -4,6 +4,7 @@ import Model.User;
 import iotModelDAO.DBManager;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ public class LoginServlet extends HttpServlet
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         DBManager manager = (DBManager) session.getAttribute("manager");
-        User user = null;
+//        User user = null;
         validator.clear(session);
         
         if (!validator.validateEmail(email))
@@ -39,25 +40,25 @@ public class LoginServlet extends HttpServlet
         {
             try
             {
-                user = manager.findUser(email, password);
+                User user = manager.findUser(email, password);
                 if (user != null)
                 {
                     session.setAttribute("user", user);
+                    int userId = user.getUserId();
+//                    Date date = new Date();
+//                    manager.addAccessLogin(userId, date, email);
                     request.getRequestDispatcher("main.jsp").include(request, response);
-                    
                 }
-                else if (user == null)
+                else
                 {
                     session.setAttribute("existErr", "Error: Username or password incorrect");
                     request.getRequestDispatcher("login.jsp").include(request, response);
                 }
             }
-            catch (SQLException ex) 
+            catch (SQLException | NullPointerException ex) 
             {
                 System.out.println(ex.getMessage());
             }
         }
-        
-        
     }
 }

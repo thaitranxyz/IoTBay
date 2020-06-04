@@ -23,15 +23,26 @@
                 cursor: pointer;
                 border-radius: 5px;
                 position: relative;
+                text-decoration: none;
                 float: right;
+                /*border: 1px solid #00b894;*/
                 margin-right: 5px; 
                 margin-bottom: 20px;
             }
             
             .button:hover {
-                background-color: white;
-                color: green;
+                background-color: #b2bec3;
+                color: white;
             }
+            
+            #user {
+                position: fixed;
+                /*float: right;*/
+                
+                top: 0.1em;
+                right: 10em;
+            }
+            
         </style>
     </head>
     <body>
@@ -39,10 +50,13 @@
             User user = (User) session.getAttribute("user");
         %>
         <!--<a href="welcome.jsp" class="button">Go back</a>-->
-        <a href="logout.jsp" class="button">Logout</a>
-        <a href="EditServlet?email='<%= user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Edit</a>
-        <div>It works</div>
+        <a href="LogoutServlet" class="button">Logout</a>
+        <a href="EditServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Edit</a>
+        <div>
+            <p id="user">You are logged in as <b>&lt${user.email}&gt</b></p>
+           
+             
+        </div>
         <%--<jsp:include page="profile.jsp" flush="true" />--%>
-        
     </body>
 </html>
