@@ -28,6 +28,7 @@ public class UpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
+        Validator validator = new Validator();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String firstName = request.getParameter("firstName");
@@ -35,29 +36,59 @@ public class UpdateServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String rePassword = request.getParameter("rePassword");
+        validator.clear(session);
         
         DBManager manager = (DBManager) session.getAttribute("manager");
         
-        try {
-            User info = manager.findUserByEmail(email);
-            int userId = info.getUserId();
-            int role = info.getRole();
-            User user = new User(userId, firstName, lastName, email, password, phone, address, role);
-            if (user != null)
-            {
-                session.setAttribute("user", user);
-                manager.updateUser(firstName, lastName, email, password, phone, address);
-                session.setAttribute("updated", "Update was successful");
-                request.getRequestDispatcher("edit.jsp").include(request, response);
-            }
-            else
-            {
-                 session.setAttribute("updated", "Update was not successful");
-                 request.getRequestDispatcher("edit.jsp").include(request, response);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
+        if (!validator.validatePassword(password))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
         }
+        else
+        {
+            try 
+            {
+                User info = manager.findUserByEmail(email);
+                int userId = info.getUserId();
+                int role = info.getRole();
+                User user = new User(userId, firstName, lastName, email, password, phone, address, role);
+                if (user != null)
+                {
+                    session.setAttribute("user", user);
+                    manager.updateUser(firstName, lastName, email, password, phone, address);
+                    session.setAttribute("updated", "Update was successful");
+                    request.getRequestDispatcher("edit.jsp").include(request, response);
+                }
+                else
+                {
+                     session.setAttribute("updated", "Update was not successful");
+                     request.getRequestDispatcher("edit.jsp").include(request, response);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+//        try {
+//            User info = manager.findUserByEmail(email);
+//            int userId = info.getUserId();
+//            int role = info.getRole();
+//            User user = new User(userId, firstName, lastName, email, password, phone, address, role);
+//            if (user != null)
+//            {
+//                session.setAttribute("user", user);
+//                manager.updateUser(firstName, lastName, email, password, phone, address);
+//                session.setAttribute("updated", "Update was successful");
+//                request.getRequestDispatcher("edit.jsp").include(request, response);
+//            }
+//            else
+//            {
+//                 session.setAttribute("updated", "Update was not successful");
+//                 request.getRequestDispatcher("edit.jsp").include(request, response);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
     }       
 

@@ -31,11 +31,11 @@ public class LoginServlet extends HttpServlet
             session.setAttribute("emailErr", "Error: Email format incorrect");
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
-        else if (!validator.validatePassword(password))
-        {   
-            session.setAttribute("passwordErr", "Error: Password format incorrect");
-            request.getRequestDispatcher("login.jsp").include(request, response);
-        }
+//        else if (!validator.validatePassword(password))
+//        {   
+//            session.setAttribute("passwordErr", "Error: Password format incorrect");
+//            request.getRequestDispatcher("login.jsp").include(request, response);
+//        }
         else
         {
             try

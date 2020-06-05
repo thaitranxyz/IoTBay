@@ -10,8 +10,12 @@ public class Validator implements Serializable
 {
    private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
    private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
-   private String passwordPattern = "[a-z0-9]{4,}";
+//   private String passwordPattern = "[a-z0-9]{4,}";
+   private String passwordPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
    private String phonePattern = "[0]{1}[0-9]{9}";
+   private String firstNamePattern = "^[A-Za-z]+$";
+   private String lastNamePattern = "[A-Za-z]+$";
+   private String addressPattern = "";
    
    public Validator() {}
    
@@ -33,11 +37,6 @@ public class Validator implements Serializable
        return validate(emailPattern, email);
    }
    
-   public boolean validateName(String name)
-   {
-       return validate(namePattern, name);
-   }
-   
    public boolean validatePassword(String password)
    {
        return validate(passwordPattern, password);
@@ -45,14 +44,34 @@ public class Validator implements Serializable
    
    public boolean validatePhone(String phone)
    {
-       return validate(passwordPattern, phone);
+       return validate(phonePattern, phone);
+   }
+   
+   public boolean validateFirstName(String firstName)
+   {
+       return validate(firstNamePattern, firstName);
+   }
+   
+   public boolean validateLastName(String lastName)
+   {
+       return validate(lastNamePattern, lastName);
+   }
+   
+   public boolean validateAddress(String address)
+   {
+       return validate(addressPattern, address);
    }
    
    public void clear(HttpSession session)
    {
        session.setAttribute("emailErr", "Email Address");
-       session.setAttribute("passwordErr", "");
+       session.setAttribute("passwordErr", "Password");
        session.setAttribute("existErr", "");
        session.setAttribute("nameErr", "");
+       session.setAttribute("phoneErr", "Phone");
+       session.setAttribute("addressErr", "Address");
+       session.setAttribute("lastNameErr", "Last Name");
+       session.setAttribute("firstNameErr", "First Name");
+       session.setAttribute("updated", "");
    }
 }

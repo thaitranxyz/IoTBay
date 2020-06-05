@@ -51,6 +51,11 @@
                  color: #00b894;   
              }
              
+             .text {
+                 text-align: center;
+                 font-family: sans-serif;
+             }
+             
         </style>
     </head>
     <body>
@@ -58,6 +63,9 @@
             String emailErr = (String) session.getAttribute("emailErr");
             String passErr = (String) session.getAttribute("passErr");
             String existErr = (String) session.getAttribute("existErr");
+            String firstNameErr = (String) session.getAttribute("firstNameErr");
+            String lastNameErr = (String) session.getAttribute("lastNameErr");
+            String phoneErr = (String) session.getAttribute("phoneErr");
         %>
          
         <div class="container">
@@ -65,12 +73,14 @@
                 <h1>Register Account</h1>
 <!--                <h4><%=(passErr != null ? passErr: "")%></h4>
                 <h4><%=(emailErr != null ? emailErr : "")%></h4>-->
+                <p class="text">Password must be at least 8 characters and containing: uppercase, lowercase and number</p>
             </div>
+            
             <form action="RegisterServlet" method="post">
-                <input type="text" name="firstName" placeholder="First Name" required>
-                <input type="text" name="lastName" placeholder="Last Name" required>
+                <input type="text" name="firstName" placeholder="<%=(firstNameErr != null ? firstNameErr: "First Name")%>" required>
+                <input type="text" name="lastName" placeholder="<%=(lastNameErr != null ? lastNameErr: "Last Name")%>" required>
                 <input type="text" name="email" placeholder="<%=(emailErr != null ? emailErr : "Email Address")%>" required>
-                <input type="tel" name="phone" placeholder="Phone Number" pattern="[0]{1}[0-9]{9}" required>
+                <input type="tel" name="phone" placeholder="<%=(phoneErr != null ? phoneErr : "Phone Number")%>" required>
                 <input type="text" name="address" placeholder="Address" required>
                 <input type="password" name="password" placeholder="<%=(passErr != null ? passErr :  "Password")%>" required>
                 <input type="password" name="rePassword" placeholder="Re-enter Password" required>

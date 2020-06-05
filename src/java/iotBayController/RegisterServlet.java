@@ -42,6 +42,21 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("emailErr", "Email format incorrect");
             request.getRequestDispatcher("register.jsp").include(request, response);
         }
+        else if (!validator.validateFirstName(firstName))
+        {
+            session.setAttribute("firstNameErr", "First Name format incorrect");
+            request.getRequestDispatcher("register.jsp").include(request, response);
+        }
+        else if (!validator.validateLastName(lastName))
+        {
+            session.setAttribute("lastNameErr", "Last Name format incorrect");
+            request.getRequestDispatcher("register.jsp").include(request, response);
+        }
+        else if (!validator.validatePhone(phone))
+        {
+            session.setAttribute("phoneErr", "Please enter valid phone number");
+            request.getRequestDispatcher("register.jsp").include(request, response);
+        }
         else if (!password.equals(rePass))
         {
             session.setAttribute("passErr", "Password does not match");
