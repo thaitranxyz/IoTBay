@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iotModelDAO;
+package DAO.DBManager;
 
-import Model.User;
+import DAO.Model.User;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +17,11 @@ import java.util.Date;
  *
  * @author trandamtrungthai
  */
-public class DBManager {
+public class UserManager {
     
     private Statement st;
     
-    public DBManager(Connection conn) throws SQLException
+    public UserManager(Connection conn) throws SQLException
     {
         st = conn.createStatement();
     }

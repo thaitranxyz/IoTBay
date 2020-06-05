@@ -1,7 +1,7 @@
-package iotBayController;
+package Controller;
 
-import Model.User;
-import iotModelDAO.DBManager;
+import DAO.Model.User;
+import DAO.DBManager.UserManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet
         Validator validator = new Validator();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        DBManager manager = (DBManager) session.getAttribute("manager");
+        UserManager manager = (UserManager) session.getAttribute("manager");
 //        User user = null;
         validator.clear(session);
         

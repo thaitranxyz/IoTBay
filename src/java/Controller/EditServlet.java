@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iotBayController;
+package Controller;
 
-import Model.User;
-import iotModelDAO.DBManager;
+import DAO.Model.User;
+import DAO.DBManager.UserManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ public class EditServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        DBManager manager = (DBManager) session.getAttribute("manager");
+        UserManager manager = (UserManager) session.getAttribute("manager");
         
         User user = null;
         try

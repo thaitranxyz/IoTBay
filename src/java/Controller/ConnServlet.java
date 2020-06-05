@@ -1,5 +1,7 @@
-package iotBayController;
+package Controller;
 
+import DAO.DBConnector;
+import DAO.DBManager.UserManager;
 import java.io.IOException;
 
 import java.sql.Connection;
@@ -20,13 +22,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
-import iotModelDAO.*;
 
 public class ConnServlet extends HttpServlet {
 
     private DBConnector db;
 
-    private DBManager manager;
+    private UserManager manager;
 
     private Connection conn;
 
@@ -61,7 +62,7 @@ public class ConnServlet extends HttpServlet {
 
         try {
 
-            manager = new DBManager(conn);
+            manager = new UserManager(conn);
 
             } catch (SQLException ex) {
 
