@@ -1,4 +1,6 @@
-package Model;
+package DAO.Model;
+
+
 import java.io.Serializable;
 
 /*

@@ -2,35 +2,35 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>ConnServlet</servlet-name>
-        <servlet-class>iotBayController.ConnServlet</servlet-class>
+        <servlet-class>Controller.ConnServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>iotBayController.LoginServlet</servlet-class>
+        <servlet-class>Controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>iotBayController.RegisterServlet</servlet-class>
+        <servlet-class>Controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>iotBayController.UpdateServlet</servlet-class>
+        <servlet-class>Controller.UpdateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditServlet</servlet-name>
-        <servlet-class>iotBayController.EditServlet</servlet-class>
+        <servlet-class>Controller.EditServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>iotBayController.LogoutServlet</servlet-class>
+        <servlet-class>Controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MainServlet</servlet-name>
-        <servlet-class>iotBayController.MainServlet</servlet-class>
+        <servlet-class>Controller.MainServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>iotBayController.DeleteServlet</servlet-class>
+        <servlet-class>Controller.DeleteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>

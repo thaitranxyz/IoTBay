@@ -1,4 +1,4 @@
-package iotBayController;
+package Controller;
 
 import java.io.Serializable;
 import java.util.regex.Matcher;
