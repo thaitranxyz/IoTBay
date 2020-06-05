@@ -89,11 +89,35 @@ public class DBManager {
         st.executeUpdate("DELETE FROM IOTBAY.REGISTEREDUSER WHERE EMAIL='" + email + "'");
     }
     
-    public void addAccessLogin(int userId, Date loginTime, String logoutTime) throws SQLException
+//    public void addAccessLogin(int userId, Date loginTime, String logoutTime) throws SQLException
+//    {
+////        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yy hh:mm:ss");
+//        st.executeUpdate("INSERT INTO IOTBAY.ACCESSLOG (USERID, LOGINDATETIME, LOGOUTDATETIME) VALUES (" + userId + ", " + loginTime + ", '" + logoutTime + "')");
+//        
+//    }
+    public void addAccessLogin(int userId, String loginTime) throws SQLException
     {
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yy hh:mm:ss");
-        st.executeUpdate("INSERT INTO IOTBAY.ACCESSLOG (USERID, LOGINDATETIME, LOGOUTDATETIME) VALUES (" + userId + ", " + loginTime + ", '" + logoutTime + "')");
+        st.executeUpdate("INSERT INTO IOTBAY.ACCESSLOG (USERID, LOGINDATETIME) VALUES (" + userId + ", '" + loginTime + "')");
         
+    }
+    
+    public void updateAccessLogout(int userId, String loginTime, String logoutTime) throws SQLException
+    {
+        st.executeUpdate("UPDATE ACCESSLOG SET LOGOUTDATETIME='" + logoutTime + "' WHERE USERID=" + userId + " AND LOGINDATETIME='" + loginTime + "'");
+        
+    }
+    
+    public String findLoginDate(int userId) throws SQLException //find loginDate using userId and lgooutdatetime
+    {
+        String fetch = "SELECT * FROM ACCESSLOG WHERE USERID=" + userId + " AND LOGOUTDATETIME IS NULL";
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while(rs.next())
+        {
+            String loginDate = rs.getString(3);
+            return loginDate;
+        }
+        return null;
     }
     
 }

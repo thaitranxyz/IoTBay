@@ -50,7 +50,7 @@
             User user = (User) session.getAttribute("user");
         %>
         <!--<a href="welcome.jsp" class="button">Go back</a>-->
-        <a href="LogoutServlet" class="button">Logout</a>
+        <a href="LogoutServlet?email='<%=user.getEmail()%>'" class="button">Logout</a>
         <a href="EditServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Edit</a>
         <div>
             <p id="user">You are logged in as <b>&lt${user.email}&gt</b></p>

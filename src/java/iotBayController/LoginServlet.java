@@ -4,6 +4,8 @@ import Model.User;
 import iotModelDAO.DBManager;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,8 +47,12 @@ public class LoginServlet extends HttpServlet
                 {
                     session.setAttribute("user", user);
                     int userId = user.getUserId();
-//                    Date date = new Date();
-//                    manager.addAccessLogin(userId, date, email);
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); //format date and later translate it to string
+                    Date date = new Date(); //date variable to hold current date time
+                    String loginDate = dateFormat.format(date);//format date to string
+                    
+                    manager.addAccessLogin(userId, loginDate);
+                    
                     request.getRequestDispatcher("main.jsp").include(request, response);
                 }
                 else

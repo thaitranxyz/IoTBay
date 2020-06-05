@@ -50,9 +50,9 @@ public class UpdateServlet extends HttpServlet {
             try 
             {
                 User info = manager.findUserByEmail(email);
-                int userId = info.getUserId();
-                int role = info.getRole();
-                User user = new User(userId, firstName, lastName, email, password, phone, address, role);
+                int userId = info.getUserId(); //get userId 
+                int role = info.getRole(); //get user's role
+                User user = new User(userId, firstName, lastName, email, password, phone, address, role); //create new user object
                 if (user != null)
                 {
                     session.setAttribute("user", user);

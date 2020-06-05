@@ -108,8 +108,8 @@
         %>
         <div class="header">
             <a class="logo">IotBay</a>
-            <a class="button-main" href="LogoutServlet">Logout</a>
-            <a class="button-main" href="MainServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>">Main</a>
+            <a class="button-main" href="LogoutServlet?email=<%=user.getEmail()%>">Logout</a>
+            <a class="button-main" href="MainServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'">Main</a>
         </div>
         <br/>
         <br/>
@@ -128,7 +128,7 @@
             <button class="button" id="cancel-btn" type="button" onclick="window.location='main.jsp'">Cancel</button>
         </form>
             <br/>
-            <form action="DeleteServlet?email=<%=user.getEmail()%>" method="post">
+            <form action="DeleteServlet?email='<%=user.getEmail()%>'" method="post">
                 <button class="button" id="delete-btn"type="submit">Delete</button>
             </form>
     </body>

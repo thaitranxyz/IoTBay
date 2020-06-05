@@ -10,7 +10,7 @@
 
 INSERT INTO REGISTEREDUSER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE, ADDRESS)
 VALUES
-('Sam', 'Smith', 'sam.smith@gmail.com', 'default', '0918273645', '123 sydney street'),
+('Sam', 'Smith', 'sam.smith@gmail.com', 'Password1', '0918273645', '123 sydney street'),
 ('Dwayne', 'Carter', 'dwayne.carter@gmail.com', 'default', '0918271245', '123 sydney street'),
 ('Jennifer', 'Chou', 'jennifer.chou@gmail.com', 'default', '0918270945', '123 sydney street'),
 ('Janet', 'Kim', 'janet.kim@gmail.com', 'default', '0918234645', '123 sydney street'),
