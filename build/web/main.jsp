@@ -6,7 +6,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Model.User"%>
+<%@page import="DAO.Model.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,8 +39,8 @@
                 position: fixed;
                 /*float: right;*/
                 
-                top: 0.1em;
-                right: 10em;
+                top: 2em;
+                right: 1em;
             }
             
         </style>
@@ -50,8 +50,9 @@
             User user = (User) session.getAttribute("user");
         %>
         <!--<a href="welcome.jsp" class="button">Go back</a>-->
-        <a href="LogoutServlet?email='<%=user.getEmail()%>'" class="button">Logout</a>
+        <a href="LogoutServlet?email=<%=user.getEmail()%>" class="button">Logout</a>
         <a href="EditServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Edit</a>
+        <a href="AccessLogServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Access Log</a>
         <div>
             <p id="user">You are logged in as <b>&lt${user.email}&gt</b></p>
            

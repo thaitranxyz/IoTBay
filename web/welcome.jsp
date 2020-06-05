@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Model.User"%>
+<%@page import="DAO.Model.User"%>
 <!DOCTYPE html>
 <html>
     <head>

@@ -32,6 +32,10 @@
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>Controller.DeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccessLogServlet</servlet-name>
+        <servlet-class>Controller.AccessLogServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccessLogServlet</servlet-name>
+        <url-pattern>/AccessLogServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
