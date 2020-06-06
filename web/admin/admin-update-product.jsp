@@ -33,7 +33,7 @@
               Product product = (Product)session.getAttribute("product");
           %>
           <div class="row">
-              <form action="/IoTBay/UpdateProduct" method="post">
+              <form action="/IoTBayApp/UpdateProduct" method="post">
                   <input type="hidden" value="<%= product.getId()%>" name="id">
                 <div class="form-group col-md-10 col-lg-12">
                   <label>Name</label>

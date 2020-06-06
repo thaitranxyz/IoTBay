@@ -35,7 +35,7 @@
                     out.println(session.getAttribute("msg"));
             %>
             <div class="row placeholders">
-                <form class="form-horizontal" action="/IoTBay/AdminController" method="get">
+                <form class="form-horizontal" action="/IoTBayApp/AdminController" method="get">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Product Name:</label>
                         <div class="col-sm-6">

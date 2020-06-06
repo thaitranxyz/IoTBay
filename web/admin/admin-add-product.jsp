@@ -31,7 +31,7 @@
               }
           %>
           <div class="row">
-              <form action="/IoTBay/AddProductController" method="post">
+              <form action="/IoTBayApp/AddProductController" method="post">
                 <div class="form-group col-md-10 col-lg-12">
                   <label>Name</label>
                   <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name" name="name" required autofocus>
