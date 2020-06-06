@@ -3,18 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/web/admin/admin-add-product.jsp</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/web/admin/admin-update-product.jsp</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/src/java/Controller/AdminController/AddProductController.java</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/src/java/Controller/AdminController/AdminController.java</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/src/java/Controller/AdminController/EditProductController.java</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/src/java/DAO/DBManager/ProductManager.java</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/src/java/Controller/AdminController/UpdateProductController.java</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/web/admin/index.jsp</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/web/admin/_meta.jsp</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/src/java/Controller/EditServlet.java</file>
-            <file>file:/C:/Users/HK/Desktop/IoTBay2/web/admin/_left.jsp</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/web/admin/_meta.jsp</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/build.xml</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/web/admin/_left.jsp</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/web/admin/admin-update-product.jsp</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/nbproject/project.properties</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/src/java/DAO/DB.java</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/web/index.jsp</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/web/admin/index.jsp</file>
+            <file>file:/C:/Users/HK/Desktop/IoTBayApp/web/admin/admin-add-product.jsp</file>
         </group>
     </open-files>
 </project-private>
