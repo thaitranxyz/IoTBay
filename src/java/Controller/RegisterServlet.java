@@ -57,9 +57,14 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("phoneErr", "Please enter valid phone number");
             request.getRequestDispatcher("register.jsp").include(request, response);
         }
+        else if (!validator.validatePassword(password))
+        {
+            session.setAttribute("passwordErr", "Password format incorrect");
+            request.getRequestDispatcher("register.jsp").include(request, response);
+        }
         else if (!password.equals(rePass))
         {
-            session.setAttribute("passErr", "Password does not match");
+            session.setAttribute("passwordErr", "Password does not match");
             request.getRequestDispatcher("register.jsp").include(request, response);
         }
         else
@@ -75,10 +80,13 @@ public class RegisterServlet extends HttpServlet {
                 else
                 {
                    manager.addUser(firstName, lastName, email, password, phone, address);
+                   
                    User userToFind = manager.findUser(email, password);
                    int userId = userToFind.getUserId(); //get userId
                    int role = userToFind.getRole();
+                   
                    User user = new User(userId, firstName, lastName, email, password, phone, address, role);
+                   
                    session.setAttribute("user", user);
                    request.getRequestDispatcher("main.jsp").include(request, response);
                 }

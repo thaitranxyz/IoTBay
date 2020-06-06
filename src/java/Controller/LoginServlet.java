@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet
                 }
                 else
                 {
-                    session.setAttribute("existErr", "Error: Username or password incorrect");
+                    session.setAttribute("loginErr", "Error: Username or password incorrect");
                     request.getRequestDispatcher("login.jsp").include(request, response);
                 }
             }

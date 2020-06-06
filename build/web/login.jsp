@@ -50,15 +50,16 @@
     </head>
     <body>
         <%
-            String existErr = (String) session.getAttribute("existErr");
+            String loginErr = (String) session.getAttribute("loginErr");
             String emailErr = (String) session.getAttribute("emailErr");
             String passwordErr= (String) session.getAttribute("passwordErr");
         %>
-        <h1>
-            <%=(existErr != null ? existErr: "")%>
-        </h1>
+        
         <div class="container">
             <h1>Login</h1>
+            <h1>
+            <%=(loginErr != null ? loginErr: "")%>
+            </h1>
             <form action="LoginServlet" method="post">
                 <div class="form-group mt-5">
                     <label for="exampleInputEmail1">Email address</label>
