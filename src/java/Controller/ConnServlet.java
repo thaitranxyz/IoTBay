@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.DBConnector;
+import DAO.DBManager.ProductManager;
 import DAO.DBManager.UserManager;
 import java.io.IOException;
 
@@ -28,6 +29,8 @@ public class ConnServlet extends HttpServlet {
     private DBConnector db;
 
     private UserManager manager;
+    
+    private ProductManager productManager;
 
     private Connection conn;
 
@@ -63,6 +66,7 @@ public class ConnServlet extends HttpServlet {
         try {
 
             manager = new UserManager(conn);
+            productManager = new ProductManager(conn);
 
             } catch (SQLException ex) {
 
@@ -72,7 +76,7 @@ public class ConnServlet extends HttpServlet {
 
         //export the DB manager to the view-session (JSPs)
         session.setAttribute("manager", manager);
-
+        session.setAttribute("products", productManager);
     }
 
     @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)

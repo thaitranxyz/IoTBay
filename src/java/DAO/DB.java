@@ -14,7 +14,7 @@ import java.sql.Connection;
 public class DB {
 
     protected String URL = "jdbc:derby://localhost:1527/";
-    protected String db =  "User";
+    protected String db =  "IoTBay";
     protected String dbUser = "IoTBay";
     protected String dbPassword = "admin";
     protected String driver = "org.apache.derby.jdbc.ClientDriver";

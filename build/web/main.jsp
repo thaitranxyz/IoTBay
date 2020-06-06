@@ -50,6 +50,14 @@
             User user = (User) session.getAttribute("user");
         %>
         <!--<a href="welcome.jsp" class="button">Go back</a>-->
+        <%
+            if(user.getRole() == 1){
+            %>
+            <a href="AdminController?name=" class="button">Admin</a>
+            <%
+            }
+        %>
+        
         <a href="LogoutServlet?email=<%=user.getEmail()%>" class="button">Logout</a>
         <a href="EditServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Edit</a>
         <a href="AccessLogServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Access Log</a>

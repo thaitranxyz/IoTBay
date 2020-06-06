@@ -45,14 +45,9 @@ public class LogoutServlet extends HttpServlet {
             Date date = new Date(); //date variable to hold current date time
             
             String logoutDate = dateFormat.format(date);//format date to string
-            String logoutTime = timeFormat.format(date);//format time to string
+            String logoutTime = timeFormat.format(date);//format time to string           
             
-            String loginDate = manager.findLoginDate(userId); //find user login date 
-            String loginTime = manager.findLoginTime(userId); // find user login time where logout date and time is null
-            
-            System.out.println(loginDate);
-            
-            manager.updateAccessLogout(userId, loginDate, loginTime, logoutDate, logoutTime); //add value to logoutdatetime column
+            manager.updateAccessLogout(userId, logoutDate, logoutTime); //add value to logoutdatetime column
         } 
         catch (SQLException ex) 
         {

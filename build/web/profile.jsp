@@ -38,7 +38,6 @@
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>userName</th>
                         <th>Password</th>
                     </tr>
                 </thead>
@@ -48,7 +47,6 @@
                         <td>${user.lastName}</td>
                         <td>${user.email}</td>
                         <td>${user.phone}</td>
-                        <td>${user.userName}</td>
                         <td>${user.password}</td>
                     </tr>
                 </tbody>
