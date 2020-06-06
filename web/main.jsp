@@ -39,7 +39,7 @@
                 position: fixed;
                 /*float: right;*/
                 
-                top: 2em;
+                top: 2.5em;
                 right: 1em;
             }
             
@@ -58,6 +58,7 @@
            
              
         </div>
-        <%--<jsp:include page="profile.jsp" flush="true" />--%>
+        <p>${user.firstName}, ${user.phone}, ${user.lastName}</p>
+        <jsp:include page="profile.jsp" flush="true" />
     </body>
 </html>

@@ -28,13 +28,13 @@ public class MainServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String address = request.getParameter("address");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String password = request.getParameter("password");
-        UserManager manager = (UserManager) session.getAttribute("manager");
+//        String firstName = request.getParameter("firstName");
+//        String lastName = request.getParameter("lastName");
+//        String address = request.getParameter("address");
+//        String email = request.getParameter("email");
+//        String phone = request.getParameter("phone");
+//        String password = request.getParameter("password");
+//        UserManager manager = (UserManager) session.getAttribute("manager");
         request.getRequestDispatcher("main.jsp").include(request, response);
         
 //        try

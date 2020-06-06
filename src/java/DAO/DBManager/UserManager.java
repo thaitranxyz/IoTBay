@@ -89,35 +89,44 @@ public class UserManager {
         st.executeUpdate("DELETE FROM IOTBAY.REGISTEREDUSER WHERE EMAIL='" + email + "'");
     }
     
-//    public void addAccessLogin(int userId, Date loginTime, String logoutTime) throws SQLException
-//    {
-////        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yy hh:mm:ss");
-//        st.executeUpdate("INSERT INTO IOTBAY.ACCESSLOG (USERID, LOGINDATETIME, LOGOUTDATETIME) VALUES (" + userId + ", " + loginTime + ", '" + logoutTime + "')");
-//        
-//    }
-    public void addAccessLogin(int userId, String loginTime) throws SQLException
+    public void addAccessLogin(int userId, String loginDate, String loginTime) throws SQLException
     {
-        st.executeUpdate("INSERT INTO IOTBAY.ACCESSLOG (USERID, LOGINDATETIME) VALUES (" + userId + ", '" + loginTime + "')");
+        st.executeUpdate("INSERT INTO IOTBAY.ACCESSLOG (USERID, LOGINDATE, LOGINTIME) VALUES (" + userId + ", '" + loginDate + "', '" + loginTime + "')");
         
     }
     
-    public void updateAccessLogout(int userId, String loginTime, String logoutTime) throws SQLException
+    public void updateAccessLogout(int userId, String loginDate, String loginTime, String logoutDate, String logoutTime) throws SQLException
     {
-        st.executeUpdate("UPDATE ACCESSLOG SET LOGOUTDATETIME='" + logoutTime + "' WHERE USERID=" + userId + " AND LOGINDATETIME='" + loginTime + "'");
+        st.executeUpdate("UPDATE ACCESSLOG SET LOGOUTDATE='" + logoutDate +"', LOGOUTTIME='" + logoutTime + "' WHERE USERID=" + userId + " AND LOGINDATE='" + loginDate + "' AND LOGINTIME='" + loginTime + "'");
         
     }
     
-    public String findLoginDate(int userId) throws SQLException //find loginDate using userId and lgooutdatetime
+    public String findLoginDate(int userId) throws SQLException //find loginDate using userId and logoutdatetime
     {
-        String fetch = "SELECT * FROM ACCESSLOG WHERE USERID=" + userId + " AND LOGOUTDATETIME IS NULL";
+        String fetch = "SELECT * FROM ACCESSLOG WHERE USERID=" + userId + " AND LOGOUTDATE IS NULL AND LOGOUTTIME IS NULL";
         ResultSet rs = st.executeQuery(fetch);
         
         while(rs.next())
         {
             String loginDate = rs.getString(3);
+            String loginTime = rs.getString(4);
             return loginDate;
         }
         return null;
     }
+    
+    public String findLoginTime (int userId) throws SQLException //find loginDate using userId and logoutdatetime
+    {
+        String fetch = "SELECT * FROM ACCESSLOG WHERE USERID=" + userId + " AND LOGOUTDATE IS NULL AND LOGOUTTIME IS NULL";
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while(rs.next())
+        {
+            String loginTime = rs.getString(4);
+            return loginTime;
+        }
+        return null;
+    }
+    
     
 }

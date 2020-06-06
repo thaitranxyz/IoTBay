@@ -46,13 +46,17 @@ public class LoginServlet extends HttpServlet
                 if (user != null)
                 {
                     session.setAttribute("user", user);
-                    int userId = user.getUserId();
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); //format date and later translate it to string
+                    int userId = user.getUserId(); //get userId
+                    
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); //format date and later translate it to string
+                    DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+                    
                     Date date = new Date(); //date variable to hold current date time
+                    
                     String loginDate = dateFormat.format(date);//format date to string
+                    String loginTime = timeFormat.format(date);
                     
-                    manager.addAccessLogin(userId, loginDate);
-                    
+                    manager.addAccessLogin(userId, loginDate, loginTime);
                     request.getRequestDispatcher("main.jsp").include(request, response);
                 }
                 else

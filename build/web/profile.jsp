@@ -28,7 +28,7 @@
     </head>
     <body>
         <%
-            UserBean userBean = (UserBean)session.getAttribute("UserBean");
+            User user = (User)session.getAttribute("user");
         %>
         <div class="container">
             <table class="table">
@@ -44,12 +44,12 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${userBean.firstName}</td>
-                        <td>${userBean.lastName}</td>
-                        <td>${userBean.email}</td>
-                        <td>${userBean.phone}</td>
-                        <td>${userBean.userName}</td>
-                        <td>${userBean.password}</td>
+                        <td>${user.firstName}</td>
+                        <td>${user.lastName}</td>
+                        <td>${user.email}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.userName}</td>
+                        <td>${user.password}</td>
                     </tr>
                 </tbody>
             </table>

@@ -38,13 +38,23 @@ public class LogoutServlet extends HttpServlet {
             User exist = manager.findUserByEmail(email);
             
             int userId = exist.getUserId();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); //format date and later translate it to string
+            
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); //format date and later translate it to string
+            DateFormat timeFormat = new SimpleDateFormat(" HH:mm:ss");
+            
             Date date = new Date(); //date variable to hold current date time
+            
             String logoutDate = dateFormat.format(date);//format date to string
-            String loginDate = manager.findLoginDate(userId); //find user login date and logoutdate=null to update logoutdate value
+            String logoutTime = timeFormat.format(date);//format time to string
+            
+            String loginDate = manager.findLoginDate(userId); //find user login date 
+            String loginTime = manager.findLoginTime(userId); // find user login time where logout date and time is null
+            
             System.out.println(loginDate);
-            manager.updateAccessLogout(userId, loginDate, logoutDate); //add value to logoutdatetime column
-        } catch (SQLException ex) 
+            
+            manager.updateAccessLogout(userId, loginDate, loginTime, logoutDate, logoutTime); //add value to logoutdatetime column
+        } 
+        catch (SQLException ex) 
         {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
