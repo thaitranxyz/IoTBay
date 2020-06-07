@@ -47,6 +47,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="register.jsp" tabindex="-1">Register</a>
                 </li>
+                <li class ="nav-item">
+                    <a class="nav-link" href="order.jsp">Order</a>
+                </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
 <!--                <input class="form-control mr-sm-2" type="text" placeholder="Username">
