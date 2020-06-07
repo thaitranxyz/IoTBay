@@ -78,13 +78,13 @@
             </div>
             
             <form action="RegisterServlet" method="post">
-                <input type="text" name="firstName" placeholder="<%=(firstNameErr != null ? firstNameErr: "First Name")%>" required>
-                <input type="text" name="lastName" placeholder="<%=(lastNameErr != null ? lastNameErr: "Last Name")%>" required>
-                <input type="text" name="email" placeholder="<%=(emailErr != null ? emailErr : "Email Address")%>" required>
-                <input type="tel" name="phone" placeholder="<%=(phoneErr != null ? phoneErr : "Phone Number")%>" required>
-                <input type="text" name="address" placeholder="Address" required>
-                <input type="password" name="password" placeholder="<%=(passwordErr != null ? passwordErr : "Password")%>" required>
-                <input type="password" name="rePassword" placeholder="Re-enter Password" required>
+                <input type="text" name="firstName" placeholder="<%=(firstNameErr != null ? firstNameErr: "First Name")%>">
+                <input type="text" name="lastName" placeholder="<%=(lastNameErr != null ? lastNameErr: "Last Name")%>">
+                <input type="text" name="email" placeholder="<%=(emailErr != null ? emailErr : "Email Address")%>">
+                <input type="tel" name="phone" placeholder="<%=(phoneErr != null ? phoneErr : "Phone Number")%>">
+                <input type="text" name="address" placeholder="Address">
+                <input type="password" name="password" placeholder="<%=(passwordErr != null ? passwordErr : "Password")%>">
+                <input type="password" name="rePassword" placeholder="Re-enter Password">
                 <button class="button" type="submit">Submit</button>
                 <button class="button" id="cancel-btn" type="button" onclick="window.location='index.jsp'">Cancel</button>
                 

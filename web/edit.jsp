@@ -104,26 +104,34 @@
             User user = (User) session.getAttribute("user");
             String updated = (String) session.getAttribute("updated");
             String existErr = (String) session.getAttribute("existErr");
+            String firstNameEditErr = (String) session.getAttribute("firstNameEditErr");
+            String lastNameEditErr = (String) session.getAttribute("lastNameEditErr");
+            String phoneEditErr = (String) session.getAttribute("phoneEditErr");
+            String passwordEditErr = (String) session.getAttribute("passwordEditErr");
             
         %>
         <div class="header">
             <a class="logo">IotBay</a>
             <a class="button-main" href="LogoutServlet?email=<%=user.getEmail()%>">Logout</a>
-            <a class="button-main" href="MainServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'">Main</a>
+            <a class="button-main" href="MainServlet?email='<%=user.getEmail()%>'">Main</a>
         </div>
         <br/>
         <br/>
         <h1>Edit Information</h1> 
         <h3><%=updated != null ? updated : "" %></h3>
         <h3><%=existErr != null ? existErr : "" %></h3>
+        <h3><%=firstNameEditErr != null ? firstNameEditErr : "" %></h3>
+        <h3><%=lastNameEditErr != null ? lastNameEditErr : "" %></h3>
+        <h3><%=phoneEditErr != null ? phoneEditErr : "" %></h3>
+        <h3><%=passwordEditErr != null ? passwordEditErr : "" %></h3>
          <form action="UpdateServlet" method="post">
-            <input type="text" name="firstName" value="${user.firstName}" required>
-            <input type="text" name="lastName" value="${user.lastName}" required>
+            <input type="text" name="firstName" value="${user.firstName}">
+            <input type="text" name="lastName" value="${user.lastName}">
             <input type="text" name="email" value="${user.email}" readonly="readonly">
-            <input type="tel" name="phone" value="${user.phone}" pattern="[0]{1}[0-9]{9}" required>
-            <input type="text" name="address" value="${user.address}" required>
-            <input type="password" name="password" value="${user.password}" required>
-            <input type="password" name="rePassword" placeholder="Re-enter Password" required>
+            <input type="tel" name="phone" value="${user.phone}">
+            <input type="text" name="address" value="${user.address}">
+            <input type="password" name="password" value="${user.password}">
+            <input type="password" name="rePassword" placeholder="Re-enter Password">
             <button class="button" type="submit">Update</button>
             <button class="button" id="cancel-btn" type="button" onclick="window.location='main.jsp'">Cancel</button>
         </form>

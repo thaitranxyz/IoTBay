@@ -43,6 +43,31 @@ public class UpdateServlet extends HttpServlet {
         if (!validator.validatePassword(password))
         {
             session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("passwordEditErr", "Password format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!validator.validateFirstName(firstName))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("firstNameEditErr", "First name format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!validator.validateLastName(lastName))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("lastNameEditErr", "Last name format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!validator.validatePhone(phone))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("phoneEditErr", "Phone format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!password.equals(rePassword))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("passwordEditErr", "Password not match re-password");
             request.getRequestDispatcher("edit.jsp").include(request, response);
         }
         else

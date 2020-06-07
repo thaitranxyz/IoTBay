@@ -10,12 +10,11 @@ public class Validator implements Serializable
 {
    private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
    private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
-//   private String passwordPattern = "[a-z0-9]{4,}";
    private String passwordPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
-   private String phonePattern = "[0]{1}[0-9]{9}";
+   private String phonePattern = "[0]{1}[4]{1}[0-9]{8}";
    private String firstNamePattern = "^[A-Za-z]+$";
    private String lastNamePattern = "[A-Za-z]+$";
-   private String addressPattern = "";
+   private String addressPattern = "^([0-9]{1,5})(_{1})([a-zA-Z]{2,})([a-zA-Z]{2,})+$";
    
    public Validator() {}
    
@@ -74,5 +73,13 @@ public class Validator implements Serializable
        session.setAttribute("firstNameErr", "First Name");
        session.setAttribute("updated", "");
        session.setAttribute("loginErr", "");
+       
+       session.setAttribute("phoneEditErr", "");
+       session.setAttribute("addressEditErr", "");
+       session.setAttribute("lastNameEditErr", "");
+       session.setAttribute("firstNameEditErr", "");
+       session.setAttribute("passwordEditErr", "");
+       
+       session.setAttribute("resultErr", "");
    }
 }
