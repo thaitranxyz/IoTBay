@@ -15,7 +15,6 @@ public class Validator implements Serializable
    private String phonePattern = "[0]{1}[0-9]{9}";
    private String firstNamePattern = "^[A-Za-z]+$";
    private String lastNamePattern = "[A-Za-z]+$";
-   private String addressPattern = "";
    private String creditCardNumberPattern = "([0-9]{16})";
    private String creditCardExpiryPattern = "([0-9]{2})(/)([0-9]{2})";
    private String creditCardCVCPattern = "([0-9]{3})";
