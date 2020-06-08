@@ -31,7 +31,7 @@ public class ProductManager {
             name_cond = "true";
         }
         else{
-            name_cond = "NAME LIKE '"+name+"'";
+            name_cond = "NAME LIKE '%"+name+"%'";
         }
         String fetch = "SELECT * FROM TBL_PRODUCT WHERE " + name_cond;
         ResultSet rs = st.executeQuery(fetch);

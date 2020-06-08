@@ -51,7 +51,8 @@
             </div>
             <% 
                 if(session.getAttribute("productList")!=null){
-                LinkedList<Product> products = (LinkedList<Product>)session.getAttribute("productList");
+                    //getting product list out of product list
+                    LinkedList<Product> products = (LinkedList<Product>)session.getAttribute("productList"); 
             %>
             <p class="text-error">Number of product:  <%=products.size()%></p>
             <table class="table table-hover table-bordered">
