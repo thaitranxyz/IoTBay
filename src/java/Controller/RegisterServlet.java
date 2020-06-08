@@ -9,6 +9,9 @@ import DAO.Model.User;
 import DAO.DBManager.UserManager;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,9 +60,14 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("phoneErr", "Please enter valid phone number");
             request.getRequestDispatcher("register.jsp").include(request, response);
         }
+        else if (!validator.validatePassword(password))
+        {
+            session.setAttribute("passwordErr", "Password format incorrect");
+            request.getRequestDispatcher("register.jsp").include(request, response);
+        }
         else if (!password.equals(rePass))
         {
-            session.setAttribute("passErr", "Password does not match");
+            session.setAttribute("passwordErr", "Password does not match");
             request.getRequestDispatcher("register.jsp").include(request, response);
         }
         else
@@ -75,10 +83,23 @@ public class RegisterServlet extends HttpServlet {
                 else
                 {
                    manager.addUser(firstName, lastName, email, password, phone, address);
+                   
                    User userToFind = manager.findUser(email, password);
                    int userId = userToFind.getUserId(); //get userId
                    int role = userToFind.getRole();
+                   
+                   DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); //format date and later translate it to string
+                   DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+                    
+                   Date date = new Date(); //date variable to hold current date time
+                    
+                   String loginDate = dateFormat.format(date);//format date to string
+                   String loginTime = timeFormat.format(date);
+                    
+                   manager.addAccessLogin(userId, loginDate, loginTime);
+                   
                    User user = new User(userId, firstName, lastName, email, password, phone, address, role);
+                   
                    session.setAttribute("user", user);
                    request.getRequestDispatcher("main.jsp").include(request, response);
                 }

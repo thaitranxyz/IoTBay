@@ -4,6 +4,8 @@
     Author     : trandamtrungthai
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.Model.AccessLog"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.Model.User"%>
 <!DOCTYPE html>
@@ -28,31 +30,36 @@
     </head>
     <body>
         <%
-            User user = (User)session.getAttribute("user");
+            ArrayList<AccessLog> list = (ArrayList)session.getAttribute("list");
+            String resultErr = (String) session.getAttribute("resultErr");
         %>
         <div class="container">
+            <h1><%=resultErr != null ? resultErr : ""%></h1>
+            <a href="accesslog.jsp">Go back</a>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>userName</th>
-                        <th>Password</th>
+                        <th>Access Log Id</th>
+                        <th>Login Date</th>
+                        <th>Login Time</th>
+                        <th>Logout Date</th>
+                        <th>Logout Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${user.firstName}</td>
-                        <td>${user.lastName}</td>
-                        <td>${user.email}</td>
-                        <td>${user.phone}</td>
-                        <td>${user.userName}</td>
-                        <td>${user.password}</td>
-                    </tr>
+                       <%for (AccessLog a : list)
+                        {%>
+                        <td><%=a.getAccessLogId()%></td>
+                        <td><%=a.getLoginDate()%></td>
+                        <td><%=a.getLoginTime()%></td>
+                        <td><%=a.getLogoutDate()%></td>
+                        <td><%=a.getLogoutTime()%></td>
+                        <%}%>
+                    </tr>                    
                 </tbody>
             </table>
         </div>
+        
     </body>
 </html>

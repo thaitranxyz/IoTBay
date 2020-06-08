@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -25,42 +24,45 @@ import javax.servlet.http.HttpSession;
  *
  * @author trandamtrungthai
  */
-public class AccessLogServlet extends HttpServlet {
+public class SearchServlet extends HttpServlet {
 
     @Override 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
+        String search = request.getParameter("search");
         String email = request.getParameter("email");
-        UserManager manager = (UserManager) session.getAttribute("manager");
+        UserManager manager = (UserManager)session.getAttribute("manager");
         validator.clear(session);
         
         try 
         {
             User user = manager.findUserByEmail(email);
-            
+            System.out.println(user.getUserId());
             int userId = user.getUserId();
-            if (user != null)
+            
+            ArrayList<AccessLog> list = manager.findAccessLogByDate(search, userId);
+            for (AccessLog a : list)
             {
-                ArrayList<AccessLog> list = manager.findAccessLog(userId);
+                System.out.println(a.getLoginDate());
+            }
+            if (list != null)
+            {
                 session.setAttribute("list", list);
-                session.setAttribute("user", user);
-                request.getRequestDispatcher("accesslog.jsp").include(request, response);
+                request.getRequestDispatcher("search.jsp").include(request, response);
             }
             else
             {
-                session.setAttribute("resultErr", "No result were found");
-                request.getRequestDispatcher("accesslog.jsp").include(request, response);
-            }
+                session.setAttribute("resultErr", "No result found");
+                request.getRequestDispatcher("search.jsp").include(request, response);
+            }            
         } 
         catch (SQLException | NullPointerException ex) 
         {
-            Logger.getLogger(AccessLogServlet.class.getName()).log(Level.SEVERE, null, ex);
-            request.getRequestDispatcher("main.jsp").include(request, response);
+            Logger.getLogger(SearchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.getRequestDispatcher("accesslog.jsp").include(request, response);
         }
-        
-        
     }
 
 }
