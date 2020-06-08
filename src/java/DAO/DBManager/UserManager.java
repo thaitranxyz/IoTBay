@@ -5,12 +5,14 @@
  */
 package DAO.DBManager;
 
+import DAO.Model.AccessLog;
 import DAO.Model.User;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -111,13 +113,13 @@ public class UserManager {
         while(rs.next())
         {
             String loginDate = rs.getString(3);
-            String loginTime = rs.getString(4);
+//            String loginTime = rs.getString(4);
             return loginDate;
         }
         return null;
     }
     
-    public String findLoginTime (int userId) throws SQLException //find loginDate using userId and logoutdatetime
+    public String findLoginTime(int userId) throws SQLException //find loginDate using userId and logoutdatetime
     {
         String fetch = "SELECT * FROM ACCESSLOG WHERE USERID=" + userId + " AND LOGOUTDATE IS NULL AND LOGOUTTIME IS NULL";
         ResultSet rs = st.executeQuery(fetch);
@@ -130,5 +132,44 @@ public class UserManager {
         return null;
     }
     
+    public ArrayList findAccessLog(int userId) throws SQLException
+    {
+        ArrayList<AccessLog> accessLog = new ArrayList<AccessLog>();
+        String fetch = "SELECT * FROM IOTBAY.ACCESSLOG WHERE USERID=" + userId;
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next())
+        {
+            int accessLogId = rs.getInt("accesslogid");
+            int UserId = rs.getInt("userid");
+            String loginDate = rs.getString("logindate");
+            String loginTime = rs.getString("logintime");
+            String logoutDate = rs.getString("logoutdate");
+            String logoutTime = rs.getString("logouttime");
+            accessLog.add(new AccessLog(accessLogId, UserId, loginDate, loginTime, logoutDate, logoutTime));
+        }
+        
+        return accessLog;
+    }
+    
+    public ArrayList findAccessLogByDate(String date, int userId) throws SQLException
+    {
+        
+        ArrayList<AccessLog> accessLog = new ArrayList<AccessLog>();
+        String fetch = "SELECT * FROM IOTBAY.ACCESSLOG WHERE USERID=" + userId + " AND LOGINDATE='" + date + "'";
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next())
+        {
+            int accessLogId = rs.getInt("accesslogid");
+            int UserId = rs.getInt("userid");
+            String loginDate = rs.getString("logindate");
+            String loginTime = rs.getString("logintime");
+            String logoutDate = rs.getString("logoutdate");
+            String logoutTime = rs.getString("logouttime");
+            accessLog.add(new AccessLog(accessLogId, UserId, loginDate, loginTime, logoutDate, logoutTime));
+        }
+        return accessLog;
+    }
     
 }

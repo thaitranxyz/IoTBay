@@ -12,10 +12,16 @@ public class Validator implements Serializable
    private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
 //   private String passwordPattern = "[a-z0-9]{4,}";
    private String passwordPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
-   private String phonePattern = "[0]{1}[0-9]{9}";
+   private String phonePattern = "[0]{1}[4]{1}[0-9]{8}";
    private String firstNamePattern = "^[A-Za-z]+$";
    private String lastNamePattern = "[A-Za-z]+$";
-   private String addressPattern = "";
+
+   private String addressPattern = "^([0-9]{1,5})(_{1})([a-zA-Z]{2,})([a-zA-Z]{2,})+$";
+
+   private String creditCardNumberPattern = "([0-9]{16})";
+   private String creditCardExpiryPattern = "([0-9]{2})(/)([0-9]{2})";
+   private String creditCardCVCPattern = "([0-9]{3})";
+
    
    public Validator() {}
    
@@ -67,7 +73,17 @@ public class Validator implements Serializable
        return validate(namePattern, name);
    }
    
-
+   public boolean validateCreditCardNumber(String creditCardNumber){
+       return validate(creditCardNumberPattern, creditCardNumber);
+   }
+   
+   public boolean validateCreditCardExpiry(String creditCardExpiry){
+       return validate(creditCardExpiryPattern, creditCardExpiry);
+   }
+   public boolean validateCreditCardCVC(String creditCardCVC){
+       return validate(creditCardCVCPattern, creditCardCVC);
+   }
+   
    public void clear(HttpSession session)
    {
        session.setAttribute("emailErr", "Email Address");
@@ -79,5 +95,14 @@ public class Validator implements Serializable
        session.setAttribute("lastNameErr", "Last Name");
        session.setAttribute("firstNameErr", "First Name");
        session.setAttribute("updated", "");
+       session.setAttribute("loginErr", "");
+       
+       session.setAttribute("phoneEditErr", "");
+       session.setAttribute("addressEditErr", "");
+       session.setAttribute("lastNameEditErr", "");
+       session.setAttribute("firstNameEditErr", "");
+       session.setAttribute("passwordEditErr", "");
+       
+       session.setAttribute("resultErr", "");
    }
 }

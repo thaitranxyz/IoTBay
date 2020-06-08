@@ -1,6 +1,5 @@
 <%@page import="DAO.Model.Payment"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.HashMap"%>
 <%@page import="DAO.Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,11 +13,16 @@
         <%
             User user = (User) session.getAttribute("user");
             ArrayList<Payment> paymentList = (ArrayList<Payment>) session.getAttribute("paymentList");
+            String DefaultString = "False";
          %>
         <h1>IotBay</h1>
         <hr>
         <div class="top_right_link_div">
             <a href="logout.jsp">Logout</a>
+            <a href="">Catalogue</a>
+            <a href="">Order List</a>
+            <a href="PaymentServlet?action=viewList">View Payment list</a>
+            <a href="main.jsp">Home</a>
         </div>
         <h2>Payment History</h2>
             <table class="payment_history">
@@ -26,34 +30,36 @@
                     <th>Credit Card Number</th>
                     <th>Credit Card Expiry</th>
                     <th>Credit Card CVC</th>
+                    <th>Default</th>
                 </tr>
                 <%
-                    try{
-                        System.out.print(paymentList);
-                        if (paymentList.size() > 0){
+                    if (paymentList.size() > 0){
                         for (int i = 0; i < paymentList.size(); i++){
+                            if(paymentList.get(i).getIsDefault()==1){
+                                DefaultString = "True";
+                            }
+                            else{
+                                DefaultString = "False";
+                            }
+                            }
                     %>
                 <tr>
                     <td><%=paymentList.get(i).getCreditCardNumber()%></td>
                     <td><%=paymentList.get(i).getCreditCardExpiry()%></td>
                     <td><%=paymentList.get(i).getCreditCardCVC()%></td>
-                    <td><a href="PaymentServlet?action=delete&number=<%=paymentList.get(i).getCreditCardNumber()%>">Delete</a></td>
+                    <td><%=DefaultString%></td>
+                    <td><a href="PaymentServlet?action=update&index=<%=i%>">Update</a></td>
+                    <td><a href="PaymentServlet?action=delete&number=<%=i%>">Delete</a></td>
                 </tr>
+                <tr>
+                    <td colspan="8"><a href="paymentDetail.jsp">Add new payment</a></td>
+                </tr>
+            </table>
                 <%
-                        }
-                        }
                     }
                     catch (Exception ex) {
                         ;
                     }
                     %>
-                    
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Total Cost</td>
-                </tr>
-            </table>
     </body>
 </html>

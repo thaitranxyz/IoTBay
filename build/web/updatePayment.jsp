@@ -19,7 +19,7 @@
         <div class="top_right_link_div">
             <a href="logout.jsp">Logout</a>
             <a href="main.jsp">Home</a>
-            <a href="PaymentServlet?action=viewList&origin=1">View Payment list</a>
+            <a href="PaymentServlet?action=viewList">View Payment list</a>
         </div>
         <hr>
         <%
@@ -29,11 +29,9 @@
             String CCCVCMsg = (String) session.getAttribute("CCCVCErr");
             String SuccessUpdate = (String) session.getAttribute("SuccessUpdate");
             String isUpdate = (String) session.getAttribute("isUpdate");
-            //Integer chckMsg = (Integer) session.getAttribute("chckEnable");
-            //System.out.print("chckMsg: " + chckMsg);
             Payment oldPayment = (Payment) session.getAttribute("oldPayment");
             %>
-            <h2>Update Payment</h2>
+            <h3>Update Payment</h3>
         
         <form action="AddPaymentServlet" method="post">
             <%
@@ -46,19 +44,25 @@
             <table>
                 <tr>
                     <td><label for="CCN">Credit Card Number</label></td>
-                    <td><input class="form_input_box" type="text" id ="frame" name="CCN" placeholder="<%=(CCNMsg != null ? CCNMsg : oldPayment.getCreditCardNumber()) %>" required></td>
+                    <td>
+                        <input class="form_input_box" type="text" id ="frame" name="CCN" placeholder="<%=(CCNMsg != null ? CCNMsg : oldPayment.getCreditCardNumber()) %>" required>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="CCE">Credit Card Expiry</label></td>
-                    <td><input class="form_input_box" type="text" id ="frame" name="CCE" placeholder="<%=(CCEMsg != null ? CCEMsg : oldPayment.getCreditCardExpiry()) %>" required></td>
+                    <td>
+                        <input class="form_input_box" type="text" id ="frame" name="CCE" placeholder="<%=(CCEMsg != null ? CCEMsg : oldPayment.getCreditCardExpiry()) %>" required>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="CCCVC">Credit Card CVC</label></td>
-                    <td><input class="form_input_box" type="text" id ="frame" name="CCCVC" placeholder="<%=(CCCVCMsg != null ? CCCVCMsg : oldPayment.getCreditCardCVC()) %>" required></td>
+                    <td>
+                        <input class="form_input_box" type="text" id ="frame" name="CCCVC" placeholder="<%=(CCCVCMsg != null ? CCCVCMsg : oldPayment.getCreditCardCVC()) %>" required>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="isDefault">Make default</label></td>
-                    <td><input type="checkbox" name="Chkbox"></td>
+                    <td><input type="checkbox" name="Checkbox"></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -72,6 +76,5 @@
                 </tr>
             </table>
         </form>
-        <a href="PaymentServlet?action=viewList&origin=1">View Payment Details</a>
     </body>
 </html>

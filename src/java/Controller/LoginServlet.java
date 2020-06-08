@@ -25,7 +25,6 @@ public class LoginServlet extends HttpServlet
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         UserManager manager = (UserManager) session.getAttribute("manager");
-//        User user = null;
         validator.clear(session);
         
         if (!validator.validateEmail(email))
@@ -33,11 +32,6 @@ public class LoginServlet extends HttpServlet
             session.setAttribute("emailErr", "Error: Email format incorrect");
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
-//        else if (!validator.validatePassword(password))
-//        {   
-//            session.setAttribute("passwordErr", "Error: Password format incorrect");
-//            request.getRequestDispatcher("login.jsp").include(request, response);
-//        }
         else
         {
             try
@@ -61,7 +55,7 @@ public class LoginServlet extends HttpServlet
                 }
                 else
                 {
-                    session.setAttribute("existErr", "Error: Username or password incorrect");
+                    session.setAttribute("loginErr", "Error: Username or password incorrect");
                     request.getRequestDispatcher("login.jsp").include(request, response);
                 }
             }

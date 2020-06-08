@@ -23,34 +23,23 @@ package Controller;
      public class AddPaymentServlet extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-             //1- retrieve the current session
              HttpSession session = request.getSession();
-             //2- create an instance of the Validator class
              Validator validator = new Validator();
-             //3- capture the posted email
              String CCN = request.getParameter("CCN");
              String isUpdate = request.getParameter("isUpdate");
              String CCE = request.getParameter("CCE");
              String CCCVC = request.getParameter("CCCVC");
-             String Checkbox = request.getParameter("Chkbox");
+             String Checkbox = request.getParameter("Checkbox");
              int isDefault = 0;
              if (Checkbox!=null){
                  isDefault = 1;
              }
-             //if(isDefaultBool){
-             //    isDefault = "TRUE";
-             //}
-             //else{
-             //    isDefault= "FALSE";
-             //}
              int origin = Integer.parseInt(request.getParameter("origin"));
-             //4- capture the posted password
-             //5- retrieve the manager instance from session
              try {
                 DBConnector connector = new DBConnector();
                 Connection conn = connector.openConnection();
                 PaymentManager db = new PaymentManager(conn);
-            //DBManager manager = (DBManager) session.getAttribute("manager");
+           
                 if(isUpdate.equals("true")){
                     String oldNumber = request.getParameter("oldNumber");
                  if (!validator.validateCreditCardNumber(CCN)) {

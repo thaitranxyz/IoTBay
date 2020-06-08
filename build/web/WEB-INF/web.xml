@@ -37,6 +37,7 @@
         <servlet-class>Controller.AccessLogServlet</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>SubmitOrderServlet</servlet-name>
         <servlet-class>Controller.SubmitOrderServlet</servlet-class>
     </servlet>
@@ -59,6 +60,10 @@
     <servlet>
         <servlet-name>OrderSearch</servlet-name>
         <servlet-class>Controller.OrderSearch</servlet-class>
+=======
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>Controller.SearchServlet</servlet-class>
+>>>>>>> origin/master
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -97,6 +102,7 @@
         <url-pattern>/AccessLogServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>SubmitOrderServlet</servlet-name>
         <url-pattern>/SubmitOrderServlet</url-pattern>
     </servlet-mapping>
@@ -119,6 +125,10 @@
     <servlet-mapping>
         <servlet-name>OrderSearch</servlet-name>
         <url-pattern>/OrderSearch</url-pattern>
+=======
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
+>>>>>>> origin/master
     </servlet-mapping>
     <session-config>
         <session-timeout>

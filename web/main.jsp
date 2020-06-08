@@ -49,19 +49,13 @@
         <%
             User user = (User) session.getAttribute("user");
         %>
-        <!--<a href="welcome.jsp" class="button">Go back</a>-->
         <a href="LogoutServlet?email=<%=user.getEmail()%>" class="button">Logout</a>
-        <a href="EditServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Edit</a>
-        <a href="AccessLogServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'" class="button">Access Log</a>
+        <a href="EditServlet?email='<%=user.getEmail()%>'" class="button">Edit</a>
+        <a href="AccessLogServlet?email='<%=user.getEmail()%>'" class="button">Access Log</a>
         <a href="OrderListServlet?email=<%=user.getEmail()%>" class='button'>Order List</a>
         <a href="SavedOrderServlet?email=<%=user.getEmail()%>" class='button'>Saved Orders</a>
         
         <div>
             <p id="user">You are logged in as <b>&lt${user.email}&gt</b></p>
-           
-             
         </div>
-        <p>${user.firstName}, ${user.phone}, ${user.lastName}</p>
-        <jsp:include page="profile.jsp" flush="true" />
     </body>
-</html>

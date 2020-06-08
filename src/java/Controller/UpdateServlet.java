@@ -43,6 +43,31 @@ public class UpdateServlet extends HttpServlet {
         if (!validator.validatePassword(password))
         {
             session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("passwordEditErr", "Password format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!validator.validateFirstName(firstName))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("firstNameEditErr", "First name format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!validator.validateLastName(lastName))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("lastNameEditErr", "Last name format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!validator.validatePhone(phone))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("phoneEditErr", "Phone format incorrect");
+            request.getRequestDispatcher("edit.jsp").include(request, response);
+        }
+        else if (!password.equals(rePassword))
+        {
+            session.setAttribute("updated", "Update was not successful");
+            session.setAttribute("passwordEditErr", "Password not match re-password");
             request.getRequestDispatcher("edit.jsp").include(request, response);
         }
         else
@@ -68,28 +93,7 @@ public class UpdateServlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-//        try {
-//            User info = manager.findUserByEmail(email);
-//            int userId = info.getUserId();
-//            int role = info.getRole();
-//            User user = new User(userId, firstName, lastName, email, password, phone, address, role);
-//            if (user != null)
-//            {
-//                session.setAttribute("user", user);
-//                manager.updateUser(firstName, lastName, email, password, phone, address);
-//                session.setAttribute("updated", "Update was successful");
-//                request.getRequestDispatcher("edit.jsp").include(request, response);
-//            }
-//            else
-//            {
-//                 session.setAttribute("updated", "Update was not successful");
-//                 request.getRequestDispatcher("edit.jsp").include(request, response);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
+        }        
     }       
 
 }
