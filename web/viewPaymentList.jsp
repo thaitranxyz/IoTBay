@@ -21,6 +21,7 @@
             <a href="logout.jsp">Logout</a>
             <a href="">Catalogue</a>
             <a href="">Order List</a>
+            <a href="PaymentServlet?action=viewList">View Payment list</a>
             <a href="main.jsp">Home</a>
         </div>
         <h2>Payment History</h2>
