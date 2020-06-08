@@ -19,7 +19,7 @@
         <div class="top_right_link_div">
             <a href="logout.jsp">Logout</a>
             <a href="main.jsp">Home</a>
-            <a href="PaymentServlet?action=viewList&origin=1">View Payment history</a>
+            <a href="PaymentServlet?action=viewList">View Payment history</a>
         </div>
         <%
             User user = (User)session.getAttribute("user");
@@ -34,26 +34,32 @@
             <%
                 if(Success!=null){
             %>
-            <h2><%=Success%></h2>
+            <h3><%=Success%></h3>
             <%
                 }
             %>
             <table>
                 <tr>
                     <td><label for="CCN">Credit Card Number</label></td>
-                    <td><input class="form_input_box" type="text" id ="frame" name="CCN" placeholder="<%=(CCNErr != null ? CCNErr : "5236172635167576") %>" required></td>
+                    <td>
+                        <input class="form_input_box" type="text" id ="frame" name="CCN" placeholder="<%=(CCNErr != null ? CCNErr : "5236172635167576") %>" required>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="CCE">Credit Card Expiry</label></td>
-                    <td><input class="form_input_box" type="text" id ="frame" name="CCE" placeholder="<%=(CCEErr != null ? CCEErr : "20/20") %>" required></td>
+                    <td>
+                        <input class="form_input_box" type="text" id ="frame" name="CCE" placeholder="<%=(CCEErr != null ? CCEErr : "20/20") %>" required>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="CCCVC">Credit Card CVC</label></td>
-                    <td><input class="form_input_box" type="text" id ="frame" name="CCCVC" placeholder="<%=(CCCVCErr != null ? CCCVCErr : "222") %>" required></td>
+                    <td>
+                        <input class="form_input_box" type="text" id ="frame" name="CCCVC" placeholder="<%=(CCCVCErr != null ? CCCVCErr : "222") %>" required>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="isDefault">As default payment</label></td>
-                    <td><input type="checkbox" name="Chkbox"></td>
+                    <td><input type="checkbox" name="Checkbox"></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -61,7 +67,7 @@
                 <center>
                     <input type="hidden" name="isUpdate" value="false">
                     <input type="hidden" name="oldPayment" value="null">
-                    <input type="hidden" name="origin" value="1">
+                    <input type="hidden" name="origin" value=${user.getId()}>
                     <input class="button" type="submit" value="Confirm" required>
                 </center>
                     </td>
