@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
      import java.sql.SQLException;
@@ -16,12 +12,9 @@ package Controller;
      import DAO.Model.User;
      import DAO.DBConnector;
      import java.io.IOException;
+     import DAO.Model.Shipment;
 import java.sql.Connection;
 
-/**
- *
- * @author Jack
- */
 public class ShippingController extends HttpServlet {
     
     private User user;
@@ -62,10 +55,9 @@ public class ShippingController extends HttpServlet {
                      session.setAttribute("updated","Update was not successful");
                      request.getRequestDispatcher("shipping.jsp").include(request,response);
                      }
-             }
+
         
          
-         response.sendRedirect("shipment.jsp");
-}
+         response.sendRedirect("shipment.jsp");}
 }
 
