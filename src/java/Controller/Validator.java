@@ -32,6 +32,30 @@ public class Validator implements Serializable
       return match.matches(); 
    }
    
+   public boolean validateInteger(String str) {
+        if (str == null) {
+            return false;
+        }
+        try {
+            int d = Integer.parseInt(str);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateDouble(String str) {
+        if (str == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(str);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+    
    public boolean checkEmpty(String email, String password)
    {
        return email.isEmpty() || password.isEmpty();

@@ -48,6 +48,14 @@
     <body>
         <%
             User user = (User) session.getAttribute("user");
+            
+        %>
+        <%
+            if(user.getRole() == 1){
+            %>
+            <a href="AdminController?name=" class="button">Admin</a>
+            <%
+            }
         %>
         <a href="LogoutServlet?email=<%=user.getEmail()%>" class="button">Logout</a>
         <a href="EditServlet?email='<%=user.getEmail()%>'" class="button">Edit</a>
