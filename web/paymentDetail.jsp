@@ -67,7 +67,7 @@
                 <center>
                     <input type="hidden" name="isUpdate" value="false">
                     <input type="hidden" name="oldPayment" value="null">
-                    <input type="hidden" name="origin" value=${user.getId()}>
+                    <input type="hidden" name="origin" value=${user.getUserId()}>
                     <input class="button" type="submit" value="Confirm" required>
                 </center>
                     </td>
