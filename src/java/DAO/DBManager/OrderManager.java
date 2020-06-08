@@ -26,10 +26,10 @@ public class OrderManager {
     }
     //add reduce quantity in product table, add quantity field in ordertable / change to cartitems
     //test for null userid case (anonymous user) -- > DONE
-    public void addOrder(String date, int userId, String email, int productId, int transactionId, String address, String trackingCode, String status) throws SQLException
+    public void addOrder(String date, int userId, String email, int productId, int quantity, int transactionId, String address, String trackingCode, String status) throws SQLException
     {
-        st.executeUpdate("INSERT INTO IOTBAY.ORDERS (EMAIL, DATE, USERID, PRODUCTID, TRANSACTIONID, ADDRESS, STATUS, TRACKINGCODE) VALUES ('" + email + "', '" 
-                + date + "', " + userId + ", " + productId + ", " + transactionId + ", '" + address + "', '" + status + "', '" + trackingCode + "')");    
+        st.executeUpdate("INSERT INTO IOTBAY.ORDERS (EMAIL, DATE, USERID, PRODUCTID, QUANTITY, TRANSACTIONID, ADDRESS, STATUS, TRACKINGCODE) VALUES ('" + email + "', '" 
+                + date + "', " + userId + ", " + productId + ", " + quantity + ", " + transactionId + ", '" + address + "', '" + status + "', '" + trackingCode + "')");    
     }
     
     //test to see if this works

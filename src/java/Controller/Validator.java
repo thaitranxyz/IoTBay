@@ -1,6 +1,9 @@
 package Controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpSession;
@@ -62,16 +65,41 @@ public class Validator implements Serializable
        return validate(addressPattern, address);
    }
    
+   public boolean validateName(String name)
+   {
+       return validate(namePattern, name);
+   }
+   
+   public boolean validateDate (String date)
+   {
+       if(date == null){
+           return false;
+       }
+       
+       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+       sdf.setLenient(false);
+       
+       try{
+           Date newDate = sdf.parse(date);
+           System.out.println(newDate);
+       } catch (ParseException e){
+           e.printStackTrace();
+           return false;
+       }
+       return true;
+   }
+   
    public void clear(HttpSession session)
    {
        session.setAttribute("emailErr", "Email Address");
        session.setAttribute("passwordErr", "Password");
        session.setAttribute("existErr", "");
-       session.setAttribute("nameErr", "");
+       session.setAttribute("nameErr", "Full Name");
        session.setAttribute("phoneErr", "Phone");
        session.setAttribute("addressErr", "Address");
        session.setAttribute("lastNameErr", "Last Name");
        session.setAttribute("firstNameErr", "First Name");
        session.setAttribute("updated", "");
+       session.setAttribute("quantityErr", "Quantity");
    }
 }

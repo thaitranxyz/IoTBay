@@ -36,10 +36,21 @@
         <servlet-name>AccessLogServlet</servlet-name>
         <servlet-class>Controller.AccessLogServlet</servlet-class>
     </servlet>
+<<<<<<< OURS
     <servlet>
         <servlet-name>TestServlet</servlet-name>
         <servlet-class>Controller.TestServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubmitOrderServlet</servlet-name>
+        <servlet-class>Controller.SubmitOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveOrderServlet</servlet-name>
+        <servlet-class>Controller.SaveOrderServlet</servlet-class>
+    </servlet>
+=======
+>>>>>>> THEIRS
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -77,8 +88,12 @@
         <url-pattern>/AccessLogServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TestServlet</servlet-name>
-        <url-pattern>/TestServlet</url-pattern>
+        <servlet-name>SubmitOrderServlet</servlet-name>
+        <url-pattern>/SubmitOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveOrderServlet</servlet-name>
+        <url-pattern>/SaveOrderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

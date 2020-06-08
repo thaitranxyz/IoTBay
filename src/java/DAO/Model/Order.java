@@ -6,6 +6,7 @@
 package DAO.Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Order implements Serializable {
     private String address;
     private String status;
     private String trackingCode;
+    //ArrayList<String> cartItems = new ArrayList();
 
     public Order(int orderId, String date, String email, int userId, int productId, 
             int transactionId, String address, String trackingCode, String status) {
