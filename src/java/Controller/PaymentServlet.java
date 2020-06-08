@@ -54,10 +54,16 @@ public class PaymentServlet extends HttpServlet {
                 
                     if (action.equalsIgnoreCase("viewList")){
                         try {
-                            User user = (User)session.getAttribute("user");
-                            ArrayList<Payment> paymentList = (ArrayList<Payment>) manager.getPaymentList(user.getUserId());
-                            session.setAttribute("paymentList", paymentList);
-                            request.getRequestDispatcher("viewPaymentList.jsp").forward(request, response);
+                            try{
+                                User user = (User)session.getAttribute("user");
+                                ArrayList<Payment> paymentList = (ArrayList<Payment>) manager.getPaymentList(user.getUserId());
+                                session.setAttribute("paymentList", paymentList);
+                                request.getRequestDispatcher("viewPaymentList.jsp").forward(request, response);
+                            }
+                            catch (Exception ex){
+                                session.setAttribute("paymentList", null);
+                                request.getRequestDispatcher("viewPaymentList.jsp").forward(request, response);
+                            }
                         } 
                         catch (Exception ex) {
                             System.out.print(ex);
