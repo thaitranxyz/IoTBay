@@ -29,6 +29,7 @@
                     <th>Credit Card Number</th>
                     <th>Credit Card Expiry</th>
                     <th>Credit Card CVC</th>
+                    <th>Default</th>
                 </tr>
                 <%
                     if (paymentList.size() > 0){
@@ -39,22 +40,25 @@
                             else{
                                 DefaultString = "False";
                             }
+                            }
                     %>
                 <tr>
                     <td><%=paymentList.get(i).getCreditCardNumber()%></td>
                     <td><%=paymentList.get(i).getCreditCardExpiry()%></td>
                     <td><%=paymentList.get(i).getCreditCardCVC()%></td>
+                    <td><%=DefaultString%></td>
                     <td><a href="PaymentServlet?action=update&index=<%=i%>">Update</a></td>
                     <td><a href="PaymentServlet?action=delete&number=<%=i%>">Delete</a></td>
                 </tr>
+                <tr>
+                    <td colspan="8"><a href="paymentDetail.jsp">Add new payment</a></td>
+                </tr>
+            </table>
                 <%
-                        }
-                        }
                     }
                     catch (Exception ex) {
                         ;
                     }
                     %>
-            </table>
     </body>
 </html>
