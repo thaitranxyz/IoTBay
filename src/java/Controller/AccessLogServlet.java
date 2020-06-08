@@ -31,24 +31,33 @@ public class AccessLogServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
+        Validator validator = new Validator();
         String email = request.getParameter("email");
-//        String password = request.getParameter("password");
         UserManager manager = (UserManager) session.getAttribute("manager");
+        validator.clear(session);
         
         try 
         {
             User user = manager.findUserByEmail(email);
+            
             int userId = user.getUserId();
             if (user != null)
             {
                 ArrayList<AccessLog> list = manager.findAccessLog(userId);
                 session.setAttribute("list", list);
+                session.setAttribute("user", user);
+                request.getRequestDispatcher("accesslog.jsp").include(request, response);
+            }
+            else
+            {
+                session.setAttribute("resultErr", "No result were found");
                 request.getRequestDispatcher("accesslog.jsp").include(request, response);
             }
         } 
-        catch (SQLException ex) 
+        catch (SQLException | NullPointerException ex) 
         {
             Logger.getLogger(AccessLogServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.getRequestDispatcher("main.jsp").include(request, response);
         }
         
         

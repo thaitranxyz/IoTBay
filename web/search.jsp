@@ -35,6 +35,7 @@
         %>
         <div class="container">
             <h1><%=resultErr != null ? resultErr : ""%></h1>
+            <a href="accesslog.jsp">Go back</a>
             <table class="table">
                 <thead>
                     <tr>
@@ -54,13 +55,11 @@
                         <td><%=a.getLoginTime()%></td>
                         <td><%=a.getLogoutDate()%></td>
                         <td><%=a.getLogoutTime()%></td>
-                        
-                    </tr>
-                    <%}%>
-                    
+                        <%}%>
+                    </tr>                    
                 </tbody>
             </table>
         </div>
-        <jsp:include page="/ConnServlet" flush="true" />
+        
     </body>
 </html>

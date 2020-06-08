@@ -29,7 +29,6 @@ public class DeleteServlet extends HttpServlet {
     {
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
         
         UserManager manager = (UserManager) session.getAttribute("manager");
         try
@@ -37,29 +36,9 @@ public class DeleteServlet extends HttpServlet {
             System.out.println(email);
             
             manager.deleteUser(email);
-//            User user = manager.findUserByEmail(email);
-//            if (user == null)
-//            {
-//                System.out.println("NULL");
-//            }
+
             request.getRequestDispatcher("index.jsp").include(request, response);
-//            User user = manager.findUserByEmail(email);
-//            if (user != null)
-//            {
-//                manager.deleteUser(email);
-//                request.getRequestDispatcher("index.jsp").include(request, response);
-//            }
-//            else
-//            {
-//                session.setAttribute("existErr", "User not exist");
-//                request.getRequestDispatcher("edit.jsp").include(request, response);
-//            }
-            
-//           
         }
-//        catch (SQLException ex)
-//        {
-//            System.out.println(ex.getMessage());
         catch (SQLException ex) 
         {
             Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);

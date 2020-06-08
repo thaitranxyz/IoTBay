@@ -9,6 +9,9 @@ import DAO.Model.User;
 import DAO.DBManager.UserManager;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -84,6 +87,16 @@ public class RegisterServlet extends HttpServlet {
                    User userToFind = manager.findUser(email, password);
                    int userId = userToFind.getUserId(); //get userId
                    int role = userToFind.getRole();
+                   
+                   DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd"); //format date and later translate it to string
+                   DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+                    
+                   Date date = new Date(); //date variable to hold current date time
+                    
+                   String loginDate = dateFormat.format(date);//format date to string
+                   String loginTime = timeFormat.format(date);
+                    
+                   manager.addAccessLogin(userId, loginDate, loginTime);
                    
                    User user = new User(userId, firstName, lastName, email, password, phone, address, role);
                    

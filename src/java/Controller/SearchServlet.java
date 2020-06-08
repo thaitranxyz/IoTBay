@@ -33,33 +33,35 @@ public class SearchServlet extends HttpServlet {
         Validator validator = new Validator();
         String search = request.getParameter("search");
         String email = request.getParameter("email");
-        UserManager manager = (UserManager) session.getAttribute("manager");
+        UserManager manager = (UserManager)session.getAttribute("manager");
         validator.clear(session);
-        User user = null;
+        
         try 
         {
-            user = manager.findUserByEmail(email);
-            System.out.println(user.getEmail() + " " + user.getAddress());
+            User user = manager.findUserByEmail(email);
+            System.out.println(user.getUserId());
             int userId = user.getUserId();
-
-            ArrayList<AccessLog> list = manager.findAccessLogByDate(search, userId);
             
-           
+            ArrayList<AccessLog> list = manager.findAccessLogByDate(search, userId);
+            for (AccessLog a : list)
+            {
+                System.out.println(a.getLoginDate());
+            }
             if (list != null)
             {
-                 session.setAttribute("list", list);
-                 request.getRequestDispatcher("search.jsp").include(request, response);
+                session.setAttribute("list", list);
+                request.getRequestDispatcher("search.jsp").include(request, response);
             }
             else
             {
-                session.setAttribute("resultErr", "No result");
+                session.setAttribute("resultErr", "No result found");
                 request.getRequestDispatcher("search.jsp").include(request, response);
-            }
-            
+            }            
         } 
-        catch (SQLException ex) 
+        catch (SQLException | NullPointerException ex) 
         {
             Logger.getLogger(SearchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.getRequestDispatcher("accesslog.jsp").include(request, response);
         }
     }
 

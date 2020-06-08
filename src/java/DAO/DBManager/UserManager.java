@@ -154,7 +154,7 @@ public class UserManager {
     {
         
         ArrayList<AccessLog> accessLog = new ArrayList<AccessLog>();
-        String fetch = "SELECT * FROM IOTBAY.ACCESSLOG WHERE LOGINDATE='" + date + "'" + " AND EMAIL=" + userId;
+        String fetch = "SELECT * FROM IOTBAY.ACCESSLOG WHERE USERID=" + userId + " AND LOGINDATE='" + date + "'";
         ResultSet rs = st.executeQuery(fetch);
         
         while (rs.next())

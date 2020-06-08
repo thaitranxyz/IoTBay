@@ -136,7 +136,7 @@
             <button class="button" id="cancel-btn" type="button" onclick="window.location='main.jsp'">Cancel</button>
         </form>
             <br/>
-            <form action="DeleteServlet?email='<%=user.getEmail()%>'" method="post">
+            <form action="DeleteServlet?email=<%=user.getEmail()%>" method="post">
                 <button class="button" id="delete-btn"type="submit">Delete</button>
             </form>
     </body>
