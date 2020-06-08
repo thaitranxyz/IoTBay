@@ -19,14 +19,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import DAO.Model.User;
 import DAO.Model.Payment;
 import DAO.DBConnector;
 import DAO.DBManager.PaymentManager;
 
 public class PaymentServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+       throws ServletException, IOException {
+              response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -42,49 +43,57 @@ public class PaymentServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        throws ServletException, IOException {
+               HttpSession session = request.getSession();
         String action = request.getParameter("action");
             
             try {
                 DBConnector connector = new DBConnector();
                 Connection conn = connector.openConnection();
                 PaymentManager manager = new PaymentManager(conn);
-                //
+                
                     if (action.equalsIgnoreCase("viewList")){
                         try {
-                            int origin = Integer.parseInt(request.getParameter("origin"));
-                            ArrayList<Payment> paymentList = (ArrayList<Payment>) manager.getPaymentList(origin);
-                            System.out.print("retrieved list");
-                            System.out.print(paymentList);
+                            User user = (User)session.getAttribute("user");
+                            ArrayList<Payment> paymentList = (ArrayList<Payment>) manager.getPaymentList(user.getUserId());
                             session.setAttribute("paymentList", paymentList);
-                            System.out.print("Set attribute");
                             request.getRequestDispatcher("viewPaymentList.jsp").forward(request, response);
-                            System.out.print("get request");
                         } 
                         catch (Exception ex) {
                             System.out.print(ex);
                         }
                     }
                     else if(action.equalsIgnoreCase("delete")){
-                        String number = request.getParameter("number");
-                        manager.deletePaymentDetails(number);
+                        int number = Integer.parseInt(request.getParameter("number"));
+                        ArrayList<Payment> paymentList = (ArrayList<Payment>)session.getAttribute("paymentList");
+                        manager.deletePaymentDetails(paymentList.get(number).getCreditCardNumber());
+                        paymentList.remove(paymentList.get(number));
+                        session.setAttribute("paymentList", paymentList);
+                        request.getRequestDispatcher("viewPaymentList.jsp").forward(request, response);
                     }
-                //
+                    else if(action.equalsIgnoreCase("update")){
+                        System.out.print("Executed update if statemetn");
+                        int index = Integer.parseInt(request.getParameter("index"));
+                        ArrayList<Payment> paymentList = (ArrayList<Payment>)session.getAttribute("paymentList");
+                        session.setAttribute("oldPayment", paymentList.get(index));
+                        session.setAttribute("CCNMsg", null);
+                        session.setAttribute("CCEMsg", null);
+                        session.setAttribute("CCCVCMsg", null);
+                        session.setAttribute("SuccessUpdate", null);
+                        request.getRequestDispatcher("updatePayment.jsp").forward(request, response);
+                    }
             }
             catch (Exception ex){
-                System.out.print(ex);
+                System.out.print("Payment Servlet Database access error: " + ex);
             }
         }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
-
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
