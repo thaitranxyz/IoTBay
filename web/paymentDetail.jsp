@@ -4,7 +4,7 @@
     Author     : pikachu125
 --%>
 
-<%@page import="DAO.Model.Customer"%>
+<%@page import="DAO.Model.Payment"%>
 <%@page import="DAO.Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
