@@ -38,6 +38,7 @@
     </servlet>
     <servlet>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <servlet-name>SubmitOrderServlet</servlet-name>
         <servlet-class>Controller.SubmitOrderServlet</servlet-class>
     </servlet>
@@ -64,6 +65,10 @@
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>Controller.SearchServlet</servlet-class>
 >>>>>>> origin/master
+=======
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>Controller.SearchServlet</servlet-class>
+>>>>>>> 8398dde16c2caf75216ef05f114418148a0c3222
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -103,6 +108,7 @@
     </servlet-mapping>
     <servlet-mapping>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <servlet-name>SubmitOrderServlet</servlet-name>
         <url-pattern>/SubmitOrderServlet</url-pattern>
     </servlet-mapping>
@@ -129,6 +135,10 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
 >>>>>>> origin/master
+=======
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
+>>>>>>> 8398dde16c2caf75216ef05f114418148a0c3222
     </servlet-mapping>
     <session-config>
         <session-timeout>

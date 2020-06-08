@@ -33,7 +33,6 @@ public class AccessLogServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
         UserManager manager = (UserManager) session.getAttribute("manager");
         validator.clear(session);
         
