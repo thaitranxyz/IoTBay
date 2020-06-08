@@ -1,6 +1,5 @@
 <%@page import="DAO.Model.Payment"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.HashMap"%>
 <%@page import="DAO.Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,11 +13,15 @@
         <%
             User user = (User) session.getAttribute("user");
             ArrayList<Payment> paymentList = (ArrayList<Payment>) session.getAttribute("paymentList");
+            String DefaultString = "False";
          %>
         <h1>IotBay</h1>
         <hr>
         <div class="top_right_link_div">
             <a href="logout.jsp">Logout</a>
+            <a href="">Catalogue</a>
+            <a href="">Order List</a>
+            <a href="main.jsp">Home</a>
         </div>
         <h2>Payment History</h2>
             <table class="payment_history">
@@ -37,7 +40,8 @@
                     <td><%=paymentList.get(i).getCreditCardNumber()%></td>
                     <td><%=paymentList.get(i).getCreditCardExpiry()%></td>
                     <td><%=paymentList.get(i).getCreditCardCVC()%></td>
-                    <td><a href="PaymentServlet?action=delete&number=<%=paymentList.get(i).getCreditCardNumber()%>">Delete</a></td>
+                    <td><a href="PaymentServlet?action=update&index=<%=i%>">Update</a></td>
+                    <td><a href="PaymentServlet?action=delete&number=<%=i%>">Delete</a></td>
                 </tr>
                 <%
                         }
@@ -47,13 +51,6 @@
                         ;
                     }
                     %>
-                    
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Total Cost</td>
-                </tr>
             </table>
     </body>
 </html>
