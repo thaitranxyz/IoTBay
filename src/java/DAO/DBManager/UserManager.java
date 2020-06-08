@@ -57,7 +57,9 @@ public class UserManager {
         while(rs.next())
         {
             String userEmail = rs.getString(4);
-            
+            System.out.println(userEmail);
+            System.out.println(email);
+            System.out.println(userEmail.equals(email));
             if (userEmail.equals(email))
             {
                 String firstName = rs.getString(2);

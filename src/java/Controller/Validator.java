@@ -62,6 +62,12 @@ public class Validator implements Serializable
        return validate(addressPattern, address);
    }
    
+   public boolean validateName(String name)
+   {
+       return validate(namePattern, name);
+   }
+   
+
    public void clear(HttpSession session)
    {
        session.setAttribute("emailErr", "Email Address");

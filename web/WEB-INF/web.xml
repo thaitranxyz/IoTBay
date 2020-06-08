@@ -36,6 +36,30 @@
         <servlet-name>AccessLogServlet</servlet-name>
         <servlet-class>Controller.AccessLogServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubmitOrderServlet</servlet-name>
+        <servlet-class>Controller.SubmitOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderListServlet</servlet-name>
+        <servlet-class>Controller.OrderListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SavedOrderServlet</servlet-name>
+        <servlet-class>Controller.SavedOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResumeOrderServlet</servlet-name>
+        <servlet-class>Controller.ResumeOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <servlet-class>Controller.DeleteOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderSearch</servlet-name>
+        <servlet-class>Controller.OrderSearch</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -71,6 +95,30 @@
     <servlet-mapping>
         <servlet-name>AccessLogServlet</servlet-name>
         <url-pattern>/AccessLogServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitOrderServlet</servlet-name>
+        <url-pattern>/SubmitOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderListServlet</servlet-name>
+        <url-pattern>/OrderListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SavedOrderServlet</servlet-name>
+        <url-pattern>/SavedOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResumeOrderServlet</servlet-name>
+        <url-pattern>/ResumeOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <url-pattern>/DeleteOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderSearch</servlet-name>
+        <url-pattern>/OrderSearch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
