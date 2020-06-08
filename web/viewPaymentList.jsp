@@ -31,10 +31,14 @@
                     <th>Credit Card CVC</th>
                 </tr>
                 <%
-                    try{
-                        System.out.print(paymentList);
-                        if (paymentList.size() > 0){
+                    if (paymentList.size() > 0){
                         for (int i = 0; i < paymentList.size(); i++){
+                            if(paymentList.get(i).getIsDefault()==1){
+                                DefaultString = "True";
+                            }
+                            else{
+                                DefaultString = "False";
+                            }
                     %>
                 <tr>
                     <td><%=paymentList.get(i).getCreditCardNumber()%></td>
