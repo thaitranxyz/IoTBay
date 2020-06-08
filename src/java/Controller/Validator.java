@@ -16,6 +16,9 @@ public class Validator implements Serializable
    private String firstNamePattern = "^[A-Za-z]+$";
    private String lastNamePattern = "[A-Za-z]+$";
    private String addressPattern = "";
+   private String creditCardNumberPattern = "([0-9]{16})";
+   private String creditCardExpiryPattern = "([0-9]{2})(/)([0-9]{2})";
+   private String creditCardCVCPattern = "([0-9]{3})";
    
    public Validator() {}
    
@@ -60,6 +63,17 @@ public class Validator implements Serializable
    public boolean validateAddress(String address)
    {
        return validate(addressPattern, address);
+   }
+   
+   public boolean validateCreditCardNumber(String creditCardNumber){
+       return validate(creditCardNumberPattern, creditCardNumber);
+   }
+   
+   public boolean validateCreditCardExpiry(String creditCardExpiry){
+       return validate(creditCardExpiryPattern, creditCardExpiry);
+   }
+   public boolean validateCreditCardCVC(String creditCardCVC){
+       return validate(creditCardCVCPattern, creditCardCVC);
    }
    
    public void clear(HttpSession session)
