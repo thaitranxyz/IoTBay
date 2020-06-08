@@ -57,9 +57,7 @@
             
         %>
         <div class="container">
-            <form action="" method="get">
-                <button type="submit" class="button" id="search">Search</button>
-            </form>
+                <a href="main.jsp" class='button'>Back</a>
             <h1>Saved Orders</h1>
             <table class="table">
                 <thead>

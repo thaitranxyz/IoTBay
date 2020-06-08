@@ -35,7 +35,7 @@
         %>
         <div class="container">
             <h1><%=resultErr != null ? resultErr : ""%></h1>
-            <a href="orderList.jsp">Back</a>
+            <a href="orderList.jsp" class='button'>Back</a>
             <table class="table">
                 <thead>
                     <tr>

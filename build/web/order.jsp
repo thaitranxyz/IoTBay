@@ -22,6 +22,7 @@
         %>
         
         <div class="container">
+            <a href="main.jsp" class='button'>Back</a>
             <div class ="title-header"> 
                 <h1>Device Order Form</h1> 
             </div>
